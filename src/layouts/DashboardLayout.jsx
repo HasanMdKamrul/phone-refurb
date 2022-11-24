@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { UserRoleContext } from "../contexts/UserRoleProvider";
+import { AuthContext } from "../contexts/AuthProvider";
+import UseRole from "../Hooke/useRole";
 import Navbar from "../Pages/Shared/Navbar/Navbar";
 import Sppiner from "../Pages/Shared/Sppiners/Sppiner";
 
 const DashboardLayout = () => {
-  const { role, loadingRole } = useContext(UserRoleContext);
+  const { user } = useContext(AuthContext);
+
+  const { role, loadingRole } = UseRole(user?.email);
 
   if (loadingRole) {
     return <Sppiner />;

@@ -23,7 +23,7 @@ export const loadProducts = async (bookingData) => {
 
 export const getSellerProducts = async (email) => {
   try {
-    console.log(email);
+    console.log("sell", email);
     const response = await fetch(
       `${process.env.REACT_APP_URL}/products?email=${email}`,
       {

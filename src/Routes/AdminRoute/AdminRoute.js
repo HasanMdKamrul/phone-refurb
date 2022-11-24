@@ -4,7 +4,7 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import UseRole from "../../Hooke/useRole";
 import Sppiner from "../../Pages/Shared/Sppiners/Sppiner";
 
-const SellerRoute = ({ children }) => {
+const AdminRoute = ({ children }) => {
   const location = useLocation();
 
   const { user, loading } = useContext(AuthContext);
@@ -14,11 +14,11 @@ const SellerRoute = ({ children }) => {
     return <Sppiner />;
   }
 
-  if (user && role === "seller") {
+  if (user && role === "admin") {
     return children;
   }
 
   return <Navigate to="/signin" state={{ from: location }} replace />;
 };
 
-export default SellerRoute;
+export default AdminRoute;

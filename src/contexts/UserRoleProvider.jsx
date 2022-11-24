@@ -8,6 +8,7 @@ const UserRoleProvider = ({ children }) => {
   const [role, setRole] = useState(null);
   const [loadingRole, setLoadingRole] = useState(true);
   const { user } = useContext(AuthContext);
+  const [refresh, setRefresh] = useState(true);
 
   useEffect(() => {
     const getRole = async () => {
@@ -21,10 +22,12 @@ const UserRoleProvider = ({ children }) => {
       }
     };
     getRole();
-  }, [user?.email]);
+  }, [user?.email, refresh]);
 
   return (
-    <UserRoleContext.Provider value={{ role, loadingRole }}>
+    <UserRoleContext.Provider
+      value={{ role, loadingRole, setRefresh, refresh }}
+    >
       {children}
     </UserRoleContext.Provider>
   );

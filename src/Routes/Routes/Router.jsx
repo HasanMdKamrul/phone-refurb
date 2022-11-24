@@ -10,6 +10,7 @@ import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
 import CategoryPage from "../../Pages/Home/CategoryPage/CategoryPage/CategoryPage";
 import Home from "../../Pages/Home/Home/Home";
 import ErrorPage from "../../Pages/Shared/ErrorPage/ErrorPage";
+import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SellerRoute from "../SellerRoute/SellerRoute";
 
@@ -69,11 +70,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/allsellers",
-        element: <AllSellers />,
+        element: (
+          <AdminRoute>
+            <AllSellers />
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/allbuyers",
-        element: <AllBuyers />,
+        element: (
+          <AdminRoute>
+            <AllBuyers />
+          </AdminRoute>
+        ),
       },
     ],
   },

@@ -7,13 +7,11 @@ import {
   saveUserAndTokenGenerate,
 } from "../../Apis/userApiAndToken";
 import { AuthContext } from "../../contexts/AuthProvider";
-import { UserRoleContext } from "../../contexts/UserRoleProvider";
 
 const Signin = () => {
   //   const [resetEmail, setResetEmail] = useState("");
   const { providerLogin, setLoading, loading, logIn, resetPassword } =
     useContext(AuthContext);
-  const { role } = useContext(UserRoleContext);
   const googleProvider = new GoogleAuthProvider();
   const navigate = useNavigate();
   const location = useLocation();

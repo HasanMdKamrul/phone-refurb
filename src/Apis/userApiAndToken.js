@@ -61,7 +61,12 @@ export const loadSellersAndBuyers = async (role) => {
   try {
     console.log(role);
     const response = await fetch(
-      `${process.env.REACT_APP_URL}/users?role=${role}`
+      `${process.env.REACT_APP_URL}/users?role=${role}`,
+      {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("token")}`,
+        },
+      }
     );
     const data = await response.json();
     console.log(data);
@@ -77,6 +82,9 @@ export const deleteSellerAndBuyer = async (id) => {
   try {
     const response = await fetch(`${process.env.REACT_APP_URL}/users/${id}`, {
       method: "DELETE",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("token")}`,
+      },
     });
     const data = await response.json();
     return data;

@@ -2,12 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import { getSellerProducts } from "../../../Apis/productsApi";
 import { AuthContext } from "../../../contexts/AuthProvider";
+import UseRole from "../../../Hooke/useRole";
 import Sppiner from "../../Shared/Sppiners/Sppiner";
 
 const MyProducts = () => {
   const { user } = useContext(AuthContext);
+  //   const { loadingRole } = useContext(UserRoleContext);
+  const { loadingRole, role } = UseRole(user?.email);
 
   // ** Load all products by this seller
+
+  console.log(user?.email);
 
   const { data: products = [], isLoading } = useQuery({
     queryKey: ["products", user?.email],
@@ -22,11 +27,11 @@ const MyProducts = () => {
     },
   });
 
-  if (isLoading) {
+  if (isLoading || loadingRole) {
     return <Sppiner />;
   }
 
-  console.log(products);
+  console.log("products", products);
 
   return (
     <div>
