@@ -1,7 +1,7 @@
 import React from "react";
 
 const ProductCard = ({ product, handleModal }) => {
-  console.log(product);
+  //   console.log(product);
 
   const {
     condition,

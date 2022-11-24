@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 import App from "./App";
 import AuthProvider from "./contexts/AuthProvider";
 import CategoryProvider from "./contexts/CategoryProvider";
+import UserRoleProvider from "./contexts/UserRoleProvider";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
@@ -16,7 +17,9 @@ root.render(
       <CategoryProvider>
         <Toaster />
         <QueryClientProvider client={queryClient}>
-          <App />
+          <UserRoleProvider>
+            <App />
+          </UserRoleProvider>
         </QueryClientProvider>
       </CategoryProvider>
     </AuthProvider>

@@ -36,3 +36,17 @@ export const saveUserAndTokenGenerate = async (userData, role = "buyer") => {
     console.log(error.message);
   }
 };
+
+// ** Get a specific user role
+export const getUserRole = async (email) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_URL}/usersrole?email=${email}`
+    );
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
