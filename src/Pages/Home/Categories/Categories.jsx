@@ -18,8 +18,8 @@ const Categories = () => {
           <Sppiner />
         ) : (
           <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {categories.map((caterory) => (
-              <CategoryCard caterory={caterory} key={caterory?._id} />
+            {categories.map((category) => (
+              <CategoryCard category={category} key={category?._id} />
             ))}
           </section>
         )}

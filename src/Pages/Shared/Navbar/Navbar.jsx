@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
+import { MdLogin, MdLogout } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut, setLoading } = useContext(AuthContext);
+
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+      toast.success("User Logout...");
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const menuItems = (
     <>
       <li>
@@ -53,7 +69,15 @@ const Navbar = () => {
           <ul className=" p-0">{menuItems}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Get started</a>
+          {user && user.uid ? (
+            <>
+              <MdLogout onClick={handleSignOut} />
+            </>
+          ) : (
+            <Link to="signin">
+              <MdLogin />
+            </Link>
+          )}
         </div>
       </div>
     </div>

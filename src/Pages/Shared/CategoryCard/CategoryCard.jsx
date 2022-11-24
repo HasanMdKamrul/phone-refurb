@@ -1,23 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CategoryCard = ({ caterory }) => {
+const CategoryCard = ({ category }) => {
+  //   console.log(category.categoryName);
+
   return (
-    <Link to={`/category/${caterory?._id}`}>
+    <Link
+      state={{ categoryName: category?.categoryName }}
+      to={`/category/${category?._id}`}
+    >
       <div className="max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
         <div className="px-4 py-2">
           <h1 className="text-3xl font-bold text-gray-800 uppercase dark:text-white">
-            {caterory?.categoryName}
+            {category?.categoryName}
           </h1>
           <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {caterory?.categoryDescription &&
-              caterory?.categoryDescription.slice(0, 150) + "..."}
+            {category?.categoryDescription &&
+              category?.categoryDescription.slice(0, 150) + "..."}
           </p>
         </div>
 
         <img
           className="object-cover w-full h-48 mt-2"
-          src={caterory?.categoryImage}
+          src={category?.categoryImage}
           alt=""
         />
 
