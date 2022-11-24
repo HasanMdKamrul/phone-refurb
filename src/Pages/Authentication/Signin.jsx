@@ -57,7 +57,7 @@ const Signin = () => {
   //   };
   return (
     <div className="flex justify-center items-center min-h-screen">
-      <div class="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+      <div class="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-md shadow-md bg-gray-500">
         <h1 class="text-3xl font-semibold text-center text-gray-700 dark:text-white">
           Phone-Refurb
         </h1>
