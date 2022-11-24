@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Toaster } from "react-hot-toast";
@@ -7,13 +8,16 @@ import CategoryProvider from "./contexts/CategoryProvider";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
+const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <AuthProvider>
       <CategoryProvider>
         <Toaster />
-        <App />
+        <QueryClientProvider client={queryClient}>
+          <App />
+        </QueryClientProvider>
       </CategoryProvider>
     </AuthProvider>
   </React.StrictMode>

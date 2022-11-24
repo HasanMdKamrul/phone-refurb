@@ -1,4 +1,7 @@
+import { format } from "date-fns";
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
+import { loadProducts } from "../../../Apis/productsApi";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import { CategoryContext } from "../../../contexts/CategoryProvider";
 
@@ -14,7 +17,7 @@ const AddAProduct = () => {
     const form = e.target;
 
     const name = form.name.value;
-    const image = form.image.files;
+    const image = form.image.files[0];
     const purchaseprice = form.purchaseprice.value;
     const sellingprice = form.sellingprice.value;
     const productCategoryId = form.productCategory.value;
@@ -36,18 +39,57 @@ const AddAProduct = () => {
       description
     );
 
-    const bookingInfo = {
-      name,
-      image,
-      purchaseprice,
-      sellingprice,
-      productCategoryId,
-      condition,
-      usagetime,
-      mobile,
-      purchaseyear,
-      description,
+    console.log(image);
+
+    const getImageUrl = (image) => {
+      const formData = new FormData();
+      formData.append("image", image);
+
+      const url = `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_image_key}`;
+
+      const loadImage = async () => {
+        try {
+          const response = await fetch(url, {
+            method: "POST",
+            body: formData,
+          });
+
+          const {
+            data: { display_url },
+          } = await response.json();
+
+          const bookingInfo = {
+            sellerName: `${user?.displayName}`,
+            sellerEmail: `${user?.email}`,
+            name,
+            productImage: display_url,
+            purchaseprice,
+            sellingprice,
+            productCategoryId,
+            condition,
+            usagetime,
+            mobile,
+            purchaseyear,
+            description,
+            postingTime: `${format(new Date(), "Pp")}`,
+          };
+
+          loadProducts(bookingInfo);
+
+          toast.success("Product Added");
+
+          //   ** save the booking to Db
+        } catch (error) {
+          toast.error(error.message);
+        }
+      };
+
+      loadImage();
     };
+
+    getImageUrl(image);
+
+    // ** Save the data to DB
   };
 
   //   console.log(format(new Date(), "Pp"));
