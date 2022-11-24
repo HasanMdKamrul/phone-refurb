@@ -50,3 +50,33 @@ export const getUserRole = async (email) => {
     console.log(error.message);
   }
 };
+
+// ** load sellers and buyers
+
+export const loadSellersAndBuyers = async (role) => {
+  try {
+    console.log(role);
+    const response = await fetch(
+      `${process.env.REACT_APP_URL}/users?role=${role}`
+    );
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+// ** Delete seller and buyer
+
+export const deleteSellerAndBuyer = async (id) => {
+  try {
+    const response = await fetch(`${process.env.REACT_APP_URL}/users/${id}`, {
+      method: "DELETE",
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
