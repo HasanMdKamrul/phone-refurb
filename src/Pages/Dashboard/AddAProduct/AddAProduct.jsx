@@ -26,18 +26,18 @@ const AddAProduct = () => {
     const mobile = form.mobile.value;
     const purchaseyear = form.purchaseyear.value;
     const description = form.description.value;
-    console.log(
-      name,
-      image,
-      purchaseprice,
-      sellingprice,
-      productCategoryId,
-      condition,
-      usagetime,
-      mobile,
-      purchaseyear,
-      description
-    );
+    // console.log(
+    //   name,
+    //   image,
+    //   purchaseprice,
+    //   sellingprice,
+    //   productCategoryId,
+    //   condition,
+    //   usagetime,
+    //   mobile,
+    //   purchaseyear,
+    //   description
+    // );
 
     console.log(image);
 
