@@ -16,15 +16,15 @@ const Signup = () => {
   } = useContext(AuthContext);
   const [Image, setImage] = useState("");
   const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
+
     const email = form.email.value;
     const name = form.name.value;
     const password = form.password.value;
     const image = form.image.files[0];
-
-    console.log(image);
 
     const getImageUrl = (image) => {
       const formData = new FormData();
@@ -44,7 +44,7 @@ const Signup = () => {
           } = await response.json();
           try {
             const result = await register(email, password);
-            console.log(result.user);
+            // console.log(result.user);
             // saveUserAndTokenGenerate(result.user);
             await userProfileUpdate({
               displayName: name,
@@ -144,6 +144,7 @@ const Signup = () => {
             </div>
 
             <input
+              name="password"
               type="password"
               placeholder="*********"
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
