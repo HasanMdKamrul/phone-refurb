@@ -1,6 +1,7 @@
 import { format } from "date-fns";
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { loadProducts } from "../../../Apis/productsApi";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import { CategoryContext } from "../../../contexts/CategoryProvider";
@@ -10,6 +11,7 @@ const conditionInfo = ["Excellent", "Good", "Fair"];
 const AddAProduct = () => {
   const { categories } = useContext(CategoryContext);
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -78,6 +80,7 @@ const AddAProduct = () => {
 
           toast.success("Product Added");
 
+          navigate("/dashboard/myproducts");
           //   ** save the booking to Db
         } catch (error) {
           toast.error(error.message);

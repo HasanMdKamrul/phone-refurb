@@ -4,6 +4,7 @@ import Main from "../../layouts/Main";
 import Signin from "../../Pages/Authentication/Signin";
 import Signup from "../../Pages/Authentication/Signup";
 import AddAProduct from "../../Pages/Dashboard/AddAProduct/AddAProduct";
+import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
 import CategoryPage from "../../Pages/Home/CategoryPage/CategoryPage/CategoryPage";
 import Home from "../../Pages/Home/Home/Home";
 import ErrorPage from "../../Pages/Shared/ErrorPage/ErrorPage";
@@ -35,10 +36,6 @@ const router = createBrowserRouter([
         path: "/signin",
         element: <Signin />,
       },
-      {
-        path: "/addaproduct",
-        element: <AddAProduct />,
-      },
     ],
   },
   {
@@ -49,6 +46,17 @@ const router = createBrowserRouter([
         <DashboardLayout />
       </PrivateRoute>
     ),
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/dashboard/addaproduct",
+        element: <AddAProduct />,
+      },
+      {
+        path: "/dashboard/myproducts",
+        element: <MyProducts />,
+      },
+    ],
   },
 ]);
 
