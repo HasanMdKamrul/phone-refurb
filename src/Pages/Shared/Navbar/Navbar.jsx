@@ -29,6 +29,16 @@ const Navbar = () => {
         >
           Home
         </NavLink>
+        {user && user?.uid && (
+          <NavLink
+            to="/dashboard"
+            className={({ isActive }) =>
+              isActive ? "border-b-2 p-2 text-blue-500 ml-2 font-bold" : "ml-2"
+            }
+          >
+            Dashboard
+          </NavLink>
+        )}
       </li>
     </>
   );
@@ -78,6 +88,28 @@ const Navbar = () => {
               <MdLogin />
             </Link>
           )}
+        </div>
+        <div className="dropdown">
+          <label
+            htmlFor="sidebar-drawer"
+            tabIndex={0}
+            className="btn btn-ghost lg:hidden"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </label>
         </div>
       </div>
     </div>
