@@ -6,6 +6,7 @@ export const loadProducts = async (bookingData) => {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify(bookingData),
     });
@@ -23,7 +24,12 @@ export const loadProducts = async (bookingData) => {
 export const getSellerProducts = async (email) => {
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_URL}/products?email=${email}`
+      `${process.env.REACT_APP_URL}/products?email=${email}`,
+      {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("token")}`,
+        },
+      }
     );
     const data = await response.json();
     return data;
