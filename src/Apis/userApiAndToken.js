@@ -2,6 +2,7 @@ export const saveUserAndTokenGenerate = async (userData, role = "buyer") => {
   try {
     console.log(userData, role);
     const currentUser = {
+      name: userData?.displayName,
       email: userData?.email,
       role: role,
     };
@@ -16,6 +17,8 @@ export const saveUserAndTokenGenerate = async (userData, role = "buyer") => {
 
     const data = await response.json();
     console.log(data);
+
+    return data;
 
     // ** Token Genrate
   } catch (error) {

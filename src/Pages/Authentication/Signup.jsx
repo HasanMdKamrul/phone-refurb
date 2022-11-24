@@ -51,12 +51,19 @@ const Signup = () => {
           try {
             const result = await register(email, password);
             // console.log(result.user);
-            saveUserAndTokenGenerate(result.user, role);
-            generateJwt(result?.user?.email);
+
             await userProfileUpdate({
               displayName: name,
               photoURL: display_url,
             });
+            const usergenerated = await saveUserAndTokenGenerate(
+              result?.user,
+              role
+            );
+            console.log(usergenerated);
+            if (usergenerated.success) {
+              generateJwt(result?.user?.email);
+            }
             await emailVerify();
             navigate("/");
             toast.success(`User has created`);

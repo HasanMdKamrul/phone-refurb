@@ -42,6 +42,8 @@ const Signin = () => {
       const password = form.password.value;
       const result = await logIn(email, password);
 
+      console.log(result);
+
       generateJwt(result?.user?.email);
       toast.success("User Login Successful...");
       console.log(result.user);
