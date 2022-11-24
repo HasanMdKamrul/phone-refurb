@@ -9,6 +9,7 @@ import CategoryPage from "../../Pages/Home/CategoryPage/CategoryPage/CategoryPag
 import Home from "../../Pages/Home/Home/Home";
 import ErrorPage from "../../Pages/Shared/ErrorPage/ErrorPage";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import SellerRoute from "../SellerRoute/SellerRoute";
 
 const router = createBrowserRouter([
   {
@@ -50,11 +51,19 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/addaproduct",
-        element: <AddAProduct />,
+        element: (
+          <SellerRoute>
+            <AddAProduct />
+          </SellerRoute>
+        ),
       },
       {
         path: "/dashboard/myproducts",
-        element: <MyProducts />,
+        element: (
+          <SellerRoute>
+            <MyProducts />
+          </SellerRoute>
+        ),
       },
     ],
   },
