@@ -2,12 +2,18 @@ import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  generateJwt,
+  saveUserAndTokenGenerate,
+} from "../../Apis/userApiAndToken";
 import { AuthContext } from "../../contexts/AuthProvider";
+import { UserRoleContext } from "../../contexts/UserRoleProvider";
 
 const Signin = () => {
   //   const [resetEmail, setResetEmail] = useState("");
   const { providerLogin, setLoading, loading, logIn, resetPassword } =
     useContext(AuthContext);
+  const { role } = useContext(UserRoleContext);
   const googleProvider = new GoogleAuthProvider();
   const navigate = useNavigate();
   const location = useLocation();
@@ -17,7 +23,8 @@ const Signin = () => {
   const googleLoginHandler = async () => {
     try {
       const result = await providerLogin(googleProvider);
-      //   saveUserAndTokenGenerate(result.user);
+      saveUserAndTokenGenerate(result.user);
+      generateJwt(result?.user?.email);
       navigate(from, { replace: true });
       toast.success("Login with google successful...");
     } catch (error) {
@@ -36,9 +43,10 @@ const Signin = () => {
 
       const password = form.password.value;
       const result = await logIn(email, password);
-      //   saveUserAndTokenGenerate(result.user);
+
+      generateJwt(result?.user?.email);
       toast.success("User Login Successful...");
-      //   console.log(result.user);
+      console.log(result.user);
       navigate(from, { replace: true });
     } catch (error) {
       toast.error(error.message);

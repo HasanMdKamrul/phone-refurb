@@ -18,19 +18,23 @@ export const saveUserAndTokenGenerate = async (userData, role = "buyer") => {
     console.log(data);
 
     // ** Token Genrate
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 
-    if (data.success) {
-      // ** token generate now
-      console.log(userData?.email);
-      const response = await fetch(
-        `${process.env.REACT_APP_URL}/jwt?email=${userData?.email}`
-      );
+// ** generate jwt token after any login
 
-      const tokenData = await response.json();
-      console.log(tokenData);
-      if (tokenData.success) {
-        localStorage.setItem("token", tokenData.token);
-      }
+export const generateJwt = async (email) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_URL}/jwt?email=${email}`
+    );
+
+    const tokenData = await response.json();
+    console.log(tokenData);
+    if (tokenData.success) {
+      localStorage.setItem("token", tokenData.token);
     }
   } catch (error) {
     console.log(error.message);

@@ -14,6 +14,7 @@ const MyProducts = () => {
     queryFn: async () => {
       try {
         const data = await getSellerProducts(user?.email);
+        console.log(data);
         return data?.data;
       } catch (error) {
         console.log(error.message);
@@ -21,11 +22,11 @@ const MyProducts = () => {
     },
   });
 
-  console.log(products);
-
   if (isLoading) {
     return <Sppiner />;
   }
+
+  console.log(products);
 
   return (
     <div>
