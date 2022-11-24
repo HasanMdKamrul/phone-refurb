@@ -30,13 +30,15 @@ const Signin = () => {
   const logInHandle = async (event) => {
     try {
       event.preventDefault();
+
       const form = event.target;
       const email = form.email.value;
+
       const password = form.password.value;
       const result = await logIn(email, password);
       //   saveUserAndTokenGenerate(result.user);
       toast.success("User Login Successful...");
-      console.log(result.user);
+      //   console.log(result.user);
       navigate(from, { replace: true });
     } catch (error) {
       toast.error(error.message);
@@ -62,26 +64,27 @@ const Signin = () => {
           Phone-Refurb
         </h1>
 
-        <form onClick={logInHandle} class="mt-6">
+        <form onSubmit={logInHandle} class="mt-6">
           <div>
             <label
-              for="Email"
-              class="block text-sm text-gray-800 dark:text-gray-200"
+              htmlFor="email"
+              className="block text-sm text-gray-800 dark:text-gray-200"
             >
               Email
             </label>
             <input
+              required
               name="email"
-              type="text"
-              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              type="email"
+              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
 
-          <div class="mt-4">
-            <div class="flex items-center justify-between">
+          <div className="mt-4">
+            <div className="flex items-center justify-between">
               <label
-                for="password"
-                class="block text-sm text-gray-800 dark:text-gray-200"
+                htmlFor="password"
+                className="block text-sm text-gray-800 dark:text-gray-200"
               >
                 Password
               </label>
@@ -95,7 +98,10 @@ const Signin = () => {
           </div>
 
           <div class="mt-6">
-            <button class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+            <button
+              type="submit"
+              class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+            >
               Login
             </button>
           </div>
