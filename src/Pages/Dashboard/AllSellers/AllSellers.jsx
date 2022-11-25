@@ -55,8 +55,9 @@ const AllSellers = () => {
       const data = await sellerVerification(seller);
 
       if (data.modifiedCount) {
-        setSellerId(seller._id);
+        toast.success("Seller Verified");
         refetch();
+        setSellerId(seller._id);
       }
     } catch (error) {
       console.log(error);

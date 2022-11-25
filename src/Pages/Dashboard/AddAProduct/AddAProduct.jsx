@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { loadProducts } from "../../../Apis/productsApi";
+import { getSellerverifiedData } from "../../../Apis/userApiAndToken";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import { CategoryContext } from "../../../contexts/CategoryProvider";
 
@@ -60,9 +61,15 @@ const AddAProduct = () => {
             data: { display_url },
           } = await response.json();
 
+          // ** get seller verified data
+
+          const data = await getSellerverifiedData(user?.email);
+          console.log(data);
+
           const bookingInfo = {
             sellerName: `${user?.displayName}`,
             sellerEmail: `${user?.email}`,
+            sellerVerified: data?.verifyStatus,
             name,
             productImage: display_url,
             purchaseprice,

@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
+import { MdVerified } from "react-icons/md";
 import { productAdvertiseOrReported } from "../../../../Apis/productsApi";
 import { AuthContext } from "../../../../contexts/AuthProvider";
 
@@ -22,6 +23,7 @@ const ProductCard = ({ product, handleModal }) => {
     sellerName,
     sellingprice,
     usagetime,
+    sellerVerified,
   } = product;
 
   const handleReportedItems = async (product) => {
@@ -59,6 +61,16 @@ const ProductCard = ({ product, handleModal }) => {
         <p>Useage Time : {usagetime} Yrs</p>
         <p>When Posted : {postingTime}</p>
         <p>Seller No : {mobile}</p>
+        {product?.sellerVerified ? (
+          <div className="flex  items-center">
+            <span>Seller Verified:</span>
+            <MdVerified />
+          </div>
+        ) : (
+          <>
+            <span>Seller Verified : X</span>
+          </>
+        )}
 
         <div className="card-actions justify-end">
           <label

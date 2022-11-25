@@ -122,3 +122,17 @@ export const sellerVerification = async (seller) => {
     console.log(error);
   }
 };
+
+// * get seller verified data
+
+export const getSellerverifiedData = async (email) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_URL}/sellervirified?email=${email}`
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
