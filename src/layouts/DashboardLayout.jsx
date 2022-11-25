@@ -43,6 +43,11 @@ const DashboardLayout = () => {
                 <li className="my-2">
                   <Link to="/dashboard/allbuyers">All Buyers</Link>
                 </li>
+                <li className="my-2">
+                  <Link to="/dashboard/reportedProducts">
+                    Reported Products
+                  </Link>
+                </li>
               </>
             )}
             {role && role === "buyer" && (

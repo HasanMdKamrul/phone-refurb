@@ -76,3 +76,36 @@ export const getAdvertiseProducts = async () => {
     console.log(error.message);
   }
 };
+
+// ** get all the advertise products
+
+export const getReportedProducts = async () => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_URL}/reportedproducts?reported=reported`
+    );
+    const data = await response.json();
+    // console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+// **  Delete Reported Product
+
+export const deleteReportedProduct = async (id) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_URL}/products/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
