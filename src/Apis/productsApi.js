@@ -41,15 +41,16 @@ export const getSellerProducts = async (email) => {
 
 // ** advertise product
 
-export const productAdvertiseOrReported = async (product) => {
+export const productAdvertiseOrReported = async (product, email) => {
   //   console.log(product._id);
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_URL}/advertiseproducts/${product._id}`,
+      `${process.env.REACT_APP_URL}/advertiseproducts/${product._id}?email=${email}`,
       {
         method: "PUT",
         headers: {
           "content-type": "application/json",
+          authorization: `bearer ${localStorage.getItem("token")}`,
         },
         body: JSON.stringify(product),
       }

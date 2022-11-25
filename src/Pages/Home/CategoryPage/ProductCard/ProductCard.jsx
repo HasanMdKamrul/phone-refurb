@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { productAdvertiseOrReported } from "../../../../Apis/productsApi";
+import { AuthContext } from "../../../../contexts/AuthProvider";
 
 const ProductCard = ({ product, handleModal }) => {
+  const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   //   console.log(product);
 
@@ -30,7 +32,7 @@ const ProductCard = ({ product, handleModal }) => {
 
     try {
       setLoading(true);
-      const data = await productAdvertiseOrReported(product);
+      const data = await productAdvertiseOrReported(product, user?.email);
       console.log(data);
       setLoading(false);
       if (data.success) {

@@ -52,7 +52,7 @@ const MyProducts = () => {
 
     try {
       setLoading(true);
-      const data = await productAdvertiseOrReported(product);
+      const data = await productAdvertiseOrReported(product, user?.email);
       console.log(data);
       setLoading(false);
       if (data.success) {

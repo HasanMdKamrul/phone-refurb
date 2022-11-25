@@ -1,17 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
 import toast from "react-hot-toast";
+import { MdVerifiedUser } from "react-icons/md";
 import {
   deleteSellerAndBuyer,
   loadSellersAndBuyers,
+  sellerVerification,
 } from "../../../Apis/userApiAndToken";
 import Sppiner from "../../Shared/Sppiners/Sppiner";
 
 const AllSellers = () => {
   // ** Load All Sellers data
 
+  const [sellerId, setSellerId] = useState(null);
+
   const { data, isLoading, refetch } = useQuery({
-    queryKey: ["users", "seller"],
+    queryKey: ["users", "seller", "sellerverify", `${sellerId}`],
     queryFn: async () => {
       try {
         const data = loadSellersAndBuyers("seller");
@@ -40,6 +44,25 @@ const AllSellers = () => {
     }
   };
 
+  const sellerVerifyHandle = async (seller) => {
+    console.log(seller._id);
+
+    // ** Seller verification update;
+
+    seller.verifyStatus = "verified";
+
+    try {
+      const data = await sellerVerification(seller);
+
+      if (data.modifiedCount) {
+        setSellerId(seller._id);
+        refetch();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <div>
@@ -54,7 +77,7 @@ const AllSellers = () => {
                 <th>Name</th>
 
                 <th>Email</th>
-                <th>Role</th>
+                <th>Verification</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -64,7 +87,18 @@ const AllSellers = () => {
                   <th>{i + 1}</th>
                   <td>{seller?.name}</td>
                   <td>{seller?.email}</td>
-                  <td>{seller?.role}</td>
+                  <td>
+                    {seller.verifyStatus ? (
+                      <MdVerifiedUser className="text-blue w-24 h-6" />
+                    ) : (
+                      <button
+                        onClick={() => sellerVerifyHandle(seller)}
+                        className="btn btn-sm"
+                      >
+                        Verify Seller
+                      </button>
+                    )}
+                  </td>
                   <td>
                     <button
                       onClick={() => deleteHandler(seller)}

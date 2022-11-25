@@ -95,3 +95,30 @@ export const deleteSellerAndBuyer = async (id) => {
     console.log(error.message);
   }
 };
+
+// ** Seller verification
+
+export const sellerVerification = async (seller) => {
+  try {
+    console.log(seller._id);
+    const response = await fetch(
+      `${process.env.REACT_APP_URL}/sellerverify/${seller?._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          //   authorization: `bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(seller),
+      }
+    );
+
+    const { data } = await response.json();
+
+    if (data.modifiedCount > 0) {
+      return data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
