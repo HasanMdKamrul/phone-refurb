@@ -23,7 +23,7 @@ const Home = () => {
     },
   });
 
-  console.log(advertiseProducts);
+  //   console.log(advertiseProducts);
 
   const handleModal = (product) => {
     console.log(product);

@@ -41,7 +41,7 @@ export const getSellerProducts = async (email) => {
 
 // ** advertise product
 
-export const productAdvertise = async (product) => {
+export const productAdvertiseOrReported = async (product) => {
   //   console.log(product._id);
   try {
     const response = await fetch(
@@ -70,7 +70,7 @@ export const getAdvertiseProducts = async () => {
       `${process.env.REACT_APP_URL}/advertiseproducts?advertise=advertise`
     );
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     return data;
   } catch (error) {
     console.log(error.message);

@@ -1,6 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useState } from "react";
-import { getSellerProducts, productAdvertise } from "../../../Apis/productsApi";
+import { useNavigate } from "react-router-dom";
+import {
+  getSellerProducts,
+  productAdvertiseOrReported,
+} from "../../../Apis/productsApi";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import UseRole from "../../../Hooke/useRole";
 import Sppiner from "../../Shared/Sppiners/Sppiner";
@@ -13,6 +17,8 @@ const MyProducts = () => {
   const [loading, setLoading] = useState(false);
 
   const [unsold, setUnsold] = useState(true);
+
+  const navigate = useNavigate();
 
   // ** Load all products by this seller
 
@@ -46,11 +52,12 @@ const MyProducts = () => {
 
     try {
       setLoading(true);
-      const data = await productAdvertise(product);
+      const data = await productAdvertiseOrReported(product);
       console.log(data);
       setLoading(false);
       if (data.success) {
         refetch();
+        navigate("/");
       }
     } catch (error) {
       console.log(error.message);

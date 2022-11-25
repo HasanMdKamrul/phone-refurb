@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { productAdvertiseOrReported } from "../../../../Apis/productsApi";
 
 const ProductCard = ({ product, handleModal }) => {
+  const [loading, setLoading] = useState(false);
   //   console.log(product);
 
   const {
@@ -19,6 +22,25 @@ const ProductCard = ({ product, handleModal }) => {
     usagetime,
   } = product;
 
+  const handleReportedItems = async (product) => {
+    console.log(product);
+    // ** products listed as reported
+
+    product.reported = "reported";
+
+    try {
+      setLoading(true);
+      const data = await productAdvertiseOrReported(product);
+      console.log(data);
+      setLoading(false);
+      if (data.success) {
+        toast.success("Product report send to Admin");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <div className="card my-12 lg:card-side p-12 bg-base-100 shadow-xl">
       <figure>
@@ -35,6 +57,7 @@ const ProductCard = ({ product, handleModal }) => {
         <p>Useage Time : {usagetime} Yrs</p>
         <p>When Posted : {postingTime}</p>
         <p>Seller No : {mobile}</p>
+
         <div className="card-actions justify-end">
           <label
             onClick={() => handleModal(product)}
@@ -43,6 +66,14 @@ const ProductCard = ({ product, handleModal }) => {
           >
             Book Now
           </label>
+        </div>
+        <div>
+          <button
+            onClick={() => handleReportedItems(product)}
+            className="btn btn-outline"
+          >
+            Report To Admin
+          </button>
         </div>
       </div>
     </div>
