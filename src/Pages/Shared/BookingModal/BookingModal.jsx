@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import { saveOrder } from "../../../Apis/OrderApi";
 import { AuthContext } from "../../../contexts/AuthProvider";
 
 const BookingModal = ({ product, setProduct }) => {
   const { user } = useContext(AuthContext);
   const {
+    _id,
     condition,
     description,
     mobile,
@@ -20,10 +22,41 @@ const BookingModal = ({ product, setProduct }) => {
     usagetime,
   } = product;
 
-  const handleProductBooking = (event) => {
+  const handleProductBooking = async (event) => {
     event.preventDefault();
     // console.log(event);
-    toast.success("Product Booking Successfull");
+
+    const form = event.target;
+
+    const buyerMobile = form.buyersphoneno.value;
+    const mettingLocation = form.mettinglocation.value;
+
+    // console.log(buyerMobile, mettingLocation);
+
+    // ** Order Booking / My Order
+
+    const orderObject = {
+      tilte: name,
+      productId: _id,
+      image: productImage,
+      buyerEmail: user?.email,
+      price: purchaseprice,
+      buyerMobile,
+      mettingLocation,
+    };
+
+    // ** Save the order to db
+
+    try {
+      const data = await saveOrder(orderObject);
+      console.log(data);
+      if (data.insertedId) {
+        toast.success("Product Booking Successfull");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+
     setProduct(null);
   };
 
