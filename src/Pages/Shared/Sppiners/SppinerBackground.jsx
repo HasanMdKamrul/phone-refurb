@@ -4,13 +4,13 @@ import "./Sppiner.css";
 const SppinerBackground = () => {
   return (
     <div>
-      <div class="background-loader">
-        <div class="loader">
-          <span class="spinner spinner1"></span>
-          <span class="spinner spinner2"></span>
-          <span class="spinner spinner3"></span>
+      <div className="background-loader">
+        <div className="loader">
+          <span className="spinner spinner1"></span>
+          <span className="spinner spinner2"></span>
+          <span className="spinner spinner3"></span>
           <br />
-          <span class="loader-text">LOADING...</span>
+          <span className="loader-text">LOADING...</span>
         </div>
       </div>
     </div>

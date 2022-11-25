@@ -23,7 +23,7 @@ export const loadProducts = async (bookingData) => {
 
 export const getSellerProducts = async (email) => {
   try {
-    console.log("sell", email);
+    // console.log("sell", email);
     const response = await fetch(
       `${process.env.REACT_APP_URL}/products?email=${email}`,
       {
@@ -33,6 +33,44 @@ export const getSellerProducts = async (email) => {
       }
     );
     const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+// ** advertise product
+
+export const productAdvertise = async (product) => {
+  //   console.log(product._id);
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_URL}/advertiseproducts/${product._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(product),
+      }
+    );
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// ** get all the advertise products
+
+export const getAdvertiseProducts = async () => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_URL}/advertiseproducts?advertise=advertise`
+    );
+    const data = await response.json();
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error.message);

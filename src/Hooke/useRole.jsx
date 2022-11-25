@@ -9,7 +9,7 @@ const UseRole = (email) => {
     const getRole = async () => {
       try {
         const data = await getUserRole(email);
-        console.log(data?.data);
+        // console.log(data?.data);
         setRole(data?.data);
         setLoadingRole(false);
       } catch (error) {

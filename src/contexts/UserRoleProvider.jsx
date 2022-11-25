@@ -14,7 +14,7 @@ const UserRoleProvider = ({ children }) => {
     const getRole = async () => {
       try {
         const data = await getUserRole(user?.email);
-        console.log(data?.data);
+        // console.log(data?.data);
         setRole(data?.data);
         setLoadingRole(false);
       } catch (error) {

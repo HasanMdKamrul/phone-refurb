@@ -1,6 +1,6 @@
 export const saveUserAndTokenGenerate = async (userData, role = "buyer") => {
   try {
-    console.log(userData, role);
+    // console.log(userData, role);
     const currentUser = {
       name: userData?.displayName,
       email: userData?.email,
@@ -16,7 +16,7 @@ export const saveUserAndTokenGenerate = async (userData, role = "buyer") => {
     });
 
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
 
     return data;
 
@@ -51,7 +51,7 @@ export const getUserRole = async (email) => {
       `${process.env.REACT_APP_URL}/usersrole?email=${email}`
     );
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     return data;
   } catch (error) {
     console.log(error.message);

@@ -20,7 +20,7 @@ const CategoryPage = () => {
           `${process.env.REACT_APP_URL}/products/${id}`
         );
         const data = await response.json();
-        console.log(data.data);
+        // console.log(data.data);
         return data.data;
       } catch (error) {
         console.log(error.message);

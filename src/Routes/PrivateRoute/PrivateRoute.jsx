@@ -6,7 +6,7 @@ import Sppiner from "../../Pages/Shared/Sppiners/Sppiner";
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   const location = useLocation();
-  console.log(loading);
+  //   console.log(loading);
   if (loading) {
     return <Sppiner />;
   }

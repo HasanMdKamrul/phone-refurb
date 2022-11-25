@@ -22,7 +22,7 @@ const BookingModal = ({ product, setProduct }) => {
 
   const handleProductBooking = (event) => {
     event.preventDefault();
-    console.log(event);
+    // console.log(event);
     toast.success("Product Booking Successfull");
     setProduct(null);
   };
