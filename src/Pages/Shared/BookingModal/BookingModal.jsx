@@ -40,7 +40,7 @@ const BookingModal = ({ product, setProduct }) => {
       productId: _id,
       image: productImage,
       buyerEmail: user?.email,
-      price: purchaseprice,
+      price: sellingprice,
       buyerMobile,
       mettingLocation,
     };

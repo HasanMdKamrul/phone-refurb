@@ -6,7 +6,9 @@ import Signup from "../../Pages/Authentication/Signup";
 import AddAProduct from "../../Pages/Dashboard/AddAProduct/AddAProduct";
 import AllBuyers from "../../Pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
+import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
+import Payment from "../../Pages/Dashboard/Payment/Payment";
 import ReportedProducts from "../../Pages/Dashboard/ReportedProducts/ReportedProducts";
 import CategoryPage from "../../Pages/Home/CategoryPage/CategoryPage/CategoryPage";
 import Home from "../../Pages/Home/Home/Home";
@@ -92,6 +94,14 @@ const router = createBrowserRouter([
             <ReportedProducts />
           </AdminRoute>
         ),
+      },
+      {
+        path: "/dashboard/myorders",
+        element: <MyOrders />,
+      },
+      {
+        path: "/dashboard/payment/:id",
+        element: <Payment />,
       },
     ],
   },
