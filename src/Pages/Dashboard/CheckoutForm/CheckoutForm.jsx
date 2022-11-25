@@ -1,7 +1,9 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { deleteReportedProduct } from "../../../Apis/productsApi";
 
-const CheckoutForm = ({ orderId, price, email, name }) => {
+const CheckoutForm = ({ orderId, price, email, name, productId }) => {
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const stripe = useStripe();
@@ -112,8 +114,11 @@ const CheckoutForm = ({ orderId, price, email, name }) => {
         console.log(data);
 
         if (data.success) {
-          setSuccess("Congrats! your payment completed");
-          setTransectionId(paymentIntent.id);
+          toast.success("Congrats! your payment completed");
+          //   ** Now time to delte the product from the main products
+          console.log(productId);
+          const data = await deleteReportedProduct(productId);
+          console.log(data);
         }
       } catch (error) {
         console.log(error.message);

@@ -10,7 +10,7 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 const Payment = () => {
   const { user } = useContext(AuthContext);
   const location = useLocation();
-  const { price, title, _id, email } = location?.state;
+  const { price, title, _id, email, productId } = location?.state;
   console.log(price, title);
 
   return (
@@ -24,6 +24,7 @@ const Payment = () => {
       <div>
         <Elements stripe={stripePromise}>
           <CheckoutForm
+            productId={productId}
             orderId={_id}
             price={price}
             email={email}
