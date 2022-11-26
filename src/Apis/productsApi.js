@@ -149,10 +149,10 @@ export const deleteReportedProduct = async (id) => {
 
 // ** Delete product after payment
 
-export const deleteProductAfterPayment = async (id) => {
+export const sellerProductDelete = async (id) => {
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_URL}/paymentproducts/${id}`,
+      `${process.env.REACT_APP_URL}/sellerproducts/${id}`,
       {
         method: "DELETE",
         headers: {

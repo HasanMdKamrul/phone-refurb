@@ -22,7 +22,9 @@ const Home = () => {
     queryFn: async () => {
       try {
         const data = await getAdvertiseProducts();
-        return data;
+        const products = data.filter((pro) => !pro.paid);
+        // console.log(products);
+        return products;
       } catch (error) {
         console.log(error.message);
       }
@@ -40,10 +42,12 @@ const Home = () => {
     return <Sppiner />;
   }
 
+  // console.log("add", advertiseProducts);
+
   return (
     <div>
       <Banner />
-      <Categories />
+
       {advertiseProducts.length > 0 && (
         <div>
           <div>
@@ -69,6 +73,7 @@ const Home = () => {
           )}
         </div>
       )}
+      <Categories />
     </div>
   );
 };

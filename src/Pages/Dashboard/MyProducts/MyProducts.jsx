@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import {
   getSellerProducts,
   productAdvertiseOrReported,
+  sellerProductDelete,
 } from "../../../Apis/productsApi";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import UseRole from "../../../Hooke/useRole";
@@ -74,6 +75,16 @@ const MyProducts = () => {
     return <Sppiner />;
   }
 
+  const handleDelete = async (product) => {
+    try {
+      await sellerProductDelete(product._id);
+      toast.success("Product successfully deleted");
+      refetch();
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   //   console.log("products", products);
 
   return (
@@ -90,6 +101,7 @@ const MyProducts = () => {
                 <th>Price</th>
                 <th>Product Status</th>
                 <th>Advertise</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -104,19 +116,30 @@ const MyProducts = () => {
                     </div>
                   </td>
                   <td>{product?.name}</td>
-                  <td>{product?.sellingprice}</td>
-                  <td>Status : {unsold ? "Avaiable/Unsold" : "Sold"} </td>
+                  <td>$ {product?.sellingprice}</td>
+                  <td>Status : {product?.paid ? "Sold" : "Unsold"} </td>
                   <td>
                     {product.advertise ? (
                       <p className="text-blue-600 font-semibold">Advertised</p>
                     ) : (
-                      <button
-                        onClick={() => advertiseHandle(product)}
-                        className="btn btn-ghost"
-                      >
-                        Advertise
-                      </button>
+                      <>
+                        <button
+                          disabled={product.paid}
+                          onClick={() => advertiseHandle(product)}
+                          className="btn btn-ghost"
+                        >
+                          Advertise
+                        </button>
+                      </>
                     )}
+                  </td>
+                  <td>
+                    <button
+                      onClick={() => handleDelete(product)}
+                      className="btn btn-accent btn-sm"
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}

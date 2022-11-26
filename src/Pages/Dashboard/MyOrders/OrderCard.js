@@ -11,6 +11,7 @@ const OrderCard = ({ order }) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title">{tilte}</h2>
+        <small>Price: ${price}</small>
 
         <div className="card-actions  justify-end">
           {!paid ? (

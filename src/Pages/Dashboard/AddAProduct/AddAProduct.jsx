@@ -27,6 +27,7 @@ const AddAProduct = () => {
     const form = e.target;
 
     const name = form.name.value;
+    const location = form.location.value;
     const image = form.image.files[0];
     const purchaseprice = form.purchaseprice.value;
     const sellingprice = form.sellingprice.value;
@@ -77,6 +78,7 @@ const AddAProduct = () => {
             sellerName: `${user?.displayName}`,
             sellerEmail: `${user?.email}`,
             sellerVerified: data?.verifyStatus,
+            location,
             name,
             productImage: display_url,
             purchaseprice,

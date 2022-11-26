@@ -1,26 +1,14 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { saveOrder } from "../../../Apis/OrderApi";
 import { AuthContext } from "../../../contexts/AuthProvider";
 
 const BookingModal = ({ product, setProduct }) => {
   const { user } = useContext(AuthContext);
-  const {
-    _id,
-    condition,
-    description,
-    mobile,
-    name,
-    postingTime,
-    productCategoryId,
-    productImage,
-    purchaseprice,
-    purchaseyear,
-    sellerEmail,
-    sellerName,
-    sellingprice,
-    usagetime,
-  } = product;
+  const { _id, name, productImage, sellingprice } = product;
+
+  const navigate = useNavigate();
 
   const handleProductBooking = async (event) => {
     event.preventDefault();
@@ -52,6 +40,7 @@ const BookingModal = ({ product, setProduct }) => {
       console.log(data);
       if (data.insertedId) {
         toast.success("Product Booking Successfull");
+        navigate(`/dashboard/myorders`);
       }
     } catch (error) {
       console.log(error.message);
