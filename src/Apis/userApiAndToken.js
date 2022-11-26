@@ -62,7 +62,7 @@ export const getUserRole = async (email) => {
 
 export const loadSellersAndBuyers = async (role) => {
   try {
-    console.log(role);
+    // console.log(role);
     const response = await fetch(
       `${process.env.REACT_APP_URL}/users?role=${role}`,
       {
@@ -72,7 +72,7 @@ export const loadSellersAndBuyers = async (role) => {
       }
     );
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     return data;
   } catch (error) {
     console.log(error.message);
@@ -107,7 +107,7 @@ export const sellerVerification = async (seller) => {
         method: "PUT",
         headers: {
           "content-type": "application/json",
-          //   authorization: `bearer ${localStorage.getItem("token")}`,
+          authorization: `bearer ${localStorage.getItem("token")}`,
         },
         body: JSON.stringify(seller),
       }

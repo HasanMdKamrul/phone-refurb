@@ -29,7 +29,7 @@ const AllBuyers = () => {
   const { data: buyers } = data;
 
   const deleteHandler = async (buyer) => {
-    console.log(buyer._id);
+    // console.log(buyer._id);
 
     try {
       await deleteSellerAndBuyer(buyer._id);

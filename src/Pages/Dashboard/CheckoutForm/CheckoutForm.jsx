@@ -2,7 +2,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { deleteReportedProduct } from "../../../Apis/productsApi";
+import { deleteProductAfterPayment } from "../../../Apis/productsApi";
 
 const CheckoutForm = ({ orderId, price, email, name, productId }) => {
   const [cardError, setCardError] = useState("");
@@ -116,7 +116,7 @@ const CheckoutForm = ({ orderId, price, email, name, productId }) => {
           toast.success("Congrats! your payment completed");
           //   ** Now time to delte the product from the main products
           console.log(productId);
-          const data = await deleteReportedProduct(productId);
+          const data = await deleteProductAfterPayment(productId);
           console.log(data);
           navigate("/dashboard/myorders");
         }

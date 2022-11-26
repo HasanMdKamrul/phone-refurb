@@ -88,7 +88,12 @@ export const getAdvertiseProducts = async () => {
 export const getReportedProducts = async () => {
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_URL}/reportedproducts?reported=reported`
+      `${process.env.REACT_APP_URL}/reportedproducts?reported=reported`,
+      {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("token")}`,
+        },
+      }
     );
     const data = await response.json();
     // console.log(data);
@@ -106,6 +111,30 @@ export const deleteReportedProduct = async (id) => {
       `${process.env.REACT_APP_URL}/products/${id}`,
       {
         method: "DELETE",
+        headers: {
+          authorization: `bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+// ** Delete product after payment
+
+export const deleteProductAfterPayment = async (id) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_URL}/paymentproducts/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          authorization: `bearer ${localStorage.getItem("token")}`,
+        },
       }
     );
     const data = await response.json();
