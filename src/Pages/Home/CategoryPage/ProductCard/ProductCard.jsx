@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { MdVerified } from "react-icons/md";
-import { productAdvertiseOrReported } from "../../../../Apis/productsApi";
+import { productReported } from "../../../../Apis/productsApi";
 import { AuthContext } from "../../../../contexts/AuthProvider";
 
 const ProductCard = ({ product, handleModal }) => {
@@ -34,7 +34,7 @@ const ProductCard = ({ product, handleModal }) => {
 
     try {
       setLoading(true);
-      const data = await productAdvertiseOrReported(product, user?.email);
+      const data = await productReported(product, user?.email);
       console.log(data);
       setLoading(false);
       if (data.success) {

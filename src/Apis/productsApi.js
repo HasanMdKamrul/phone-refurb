@@ -62,6 +62,29 @@ export const productAdvertiseOrReported = async (product, email) => {
     console.log(error);
   }
 };
+// ** advertise product
+
+export const productReported = async (product, email) => {
+  //   console.log(product._id);
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_URL}/reportedproducts/${product._id}?email=${email}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          authorization: `bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(product),
+      }
+    );
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 // ** get all the advertise products
 
