@@ -4,6 +4,7 @@ export const saveOrder = async (order) => {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify(order),
     });

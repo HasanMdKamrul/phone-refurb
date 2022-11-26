@@ -14,6 +14,7 @@ import CategoryPage from "../../Pages/Home/CategoryPage/CategoryPage/CategoryPag
 import Home from "../../Pages/Home/Home/Home";
 import ErrorPage from "../../Pages/Shared/ErrorPage/ErrorPage";
 import AdminRoute from "../AdminRoute/AdminRoute";
+import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SellerRoute from "../SellerRoute/SellerRoute";
 
@@ -33,7 +34,14 @@ const router = createBrowserRouter([
       },
       {
         path: "/category/:id",
-        element: <CategoryPage />,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <BuyerRoute>
+              <CategoryPage />
+            </BuyerRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/signup",
@@ -97,11 +105,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/myorders",
-        element: <MyOrders />,
+        element: (
+          <BuyerRoute>
+            <MyOrders />
+          </BuyerRoute>
+        ),
       },
       {
         path: "/dashboard/payment/:id",
-        element: <Payment />,
+        element: (
+          <BuyerRoute>
+            <Payment />
+          </BuyerRoute>
+        ),
       },
     ],
   },

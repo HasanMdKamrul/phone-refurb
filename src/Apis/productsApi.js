@@ -68,7 +68,12 @@ export const productAdvertiseOrReported = async (product, email) => {
 export const getAdvertiseProducts = async () => {
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_URL}/advertiseproducts?advertise=advertise`
+      `${process.env.REACT_APP_URL}/advertiseproducts?advertise=advertise`,
+      {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("token")}`,
+        },
+      }
     );
     const data = await response.json();
     // console.log(data);

@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import {
   getSellerProducts,
@@ -41,6 +42,8 @@ const MyProducts = () => {
     },
   });
 
+  console.log(products);
+
   //   console.log("refech", products);
 
   const advertiseHandle = async (product) => {
@@ -57,7 +60,10 @@ const MyProducts = () => {
       setLoading(false);
       if (data.success) {
         refetch();
-        navigate("/");
+        toast.success(
+          "Your product will be shown on the advertise section/Buyers will see...."
+        );
+        // navigate("/");
       }
     } catch (error) {
       console.log(error.message);
@@ -101,12 +107,16 @@ const MyProducts = () => {
                   <td>{product?.sellingprice}</td>
                   <td>Status : {unsold ? "Avaiable/Unsold" : "Sold"} </td>
                   <td>
-                    <button
-                      onClick={() => advertiseHandle(product)}
-                      className="btn btn-ghost"
-                    >
-                      Advertise
-                    </button>
+                    {product.advertise ? (
+                      <p className="text-blue-600 font-semibold">Advertised</p>
+                    ) : (
+                      <button
+                        onClick={() => advertiseHandle(product)}
+                        className="btn btn-ghost"
+                      >
+                        Advertise
+                      </button>
+                    )}
                   </td>
                 </tr>
               ))}

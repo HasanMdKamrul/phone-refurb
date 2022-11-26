@@ -1,6 +1,7 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { deleteReportedProduct } from "../../../Apis/productsApi";
 
 const CheckoutForm = ({ orderId, price, email, name, productId }) => {
@@ -8,9 +9,8 @@ const CheckoutForm = ({ orderId, price, email, name, productId }) => {
   const [clientSecret, setClientSecret] = useState("");
   const stripe = useStripe();
   const elements = useElements();
-  const [success, setSuccess] = useState("");
   const [processing, setProcessing] = useState(false);
-  const [transectionId, setTransectionId] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
@@ -59,7 +59,6 @@ const CheckoutForm = ({ orderId, price, email, name, productId }) => {
       setCardError("");
     }
 
-    setSuccess("");
     setProcessing("");
 
     // ** Step-2 now we have to confirm payment
@@ -119,14 +118,13 @@ const CheckoutForm = ({ orderId, price, email, name, productId }) => {
           console.log(productId);
           const data = await deleteReportedProduct(productId);
           console.log(data);
+          navigate("/dashboard/myorders");
         }
       } catch (error) {
         console.log(error.message);
       }
     }
   };
-
-  console.log(transectionId);
 
   return (
     <div className="p-12 bg-gray-200 shadow-2xl w-96 my-12 rounded-2xl">
@@ -156,7 +154,6 @@ const CheckoutForm = ({ orderId, price, email, name, productId }) => {
         </button>
       </form>
       {cardError && <p className="text-red-600">{cardError}</p>}
-      {transectionId}
     </div>
   );
 };

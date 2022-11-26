@@ -1,10 +1,30 @@
-import React, { useContext } from "react";
-import { CategoryContext } from "../../../contexts/CategoryProvider";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import CategoryCard from "../../Shared/CategoryCard/CategoryCard";
-import Sppiner from "../../Shared/Sppiners/Sppiner";
 
 const Categories = () => {
-  const { categories, isCategoryLoading } = useContext(CategoryContext);
+  // const { categories, isCategoryLoading } = useContext(CategoryContext);
+
+  const [categories, setCategories] = useState([]);
+
+  // if (isCategoryLoading) {
+  //   return <Sppiner />;
+  // }
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_URL}/categories`
+        );
+        setCategories(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    loadData();
+  }, []);
 
   return (
     <>
@@ -14,15 +34,11 @@ const Categories = () => {
             Discover Our Categories
           </h1>
         </div>
-        {isCategoryLoading ? (
-          <Sppiner />
-        ) : (
-          <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {categories.map((category) => (
-              <CategoryCard category={category} key={category?._id} />
-            ))}
-          </section>
-        )}
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {categories?.map((category) => (
+            <CategoryCard category={category} key={category?._id} />
+          ))}
+        </section>
       </div>
     </>
   );

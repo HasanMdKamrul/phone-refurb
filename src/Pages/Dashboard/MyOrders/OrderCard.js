@@ -4,9 +4,6 @@ import { Link } from "react-router-dom";
 const OrderCard = ({ order }) => {
   const { image, tilte, price, _id, buyerEmail, paid, productId } = order;
 
-  console.log(productId);
-  console.log(order);
-
   return (
     <div className="card  card-side bg-base-100 mt-5 border  shadow-2xl">
       <figure>

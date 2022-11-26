@@ -13,7 +13,12 @@ const MyOrders = () => {
     queryFn: async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_URL}/orders/${user?.email}`
+          `${process.env.REACT_APP_URL}/orders/${user?.email}`,
+          {
+            headers: {
+              authorization: `bearer ${localStorage.getItem("token")}`,
+            },
+          }
         );
         const data = await response.json();
         return data;
@@ -22,8 +27,6 @@ const MyOrders = () => {
       }
     },
   });
-
-  console.log(orders);
 
   return (
     <div className="mt-5">

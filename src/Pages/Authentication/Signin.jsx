@@ -1,12 +1,10 @@
 import { GoogleAuthProvider } from "firebase/auth";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import {
-  generateJwt,
-  saveUserAndTokenGenerate,
-} from "../../Apis/userApiAndToken";
+import { saveUserAndTokenGenerate } from "../../Apis/userApiAndToken";
 import { AuthContext } from "../../contexts/AuthProvider";
+import useToken from "../../Hooke/useToken";
 
 const Signin = () => {
   //   const [resetEmail, setResetEmail] = useState("");
@@ -15,15 +13,22 @@ const Signin = () => {
   const googleProvider = new GoogleAuthProvider();
   const navigate = useNavigate();
   const location = useLocation();
+  const [loginUserEmail, setLoginUserEmail] = useState("");
+  const [token] = useToken(loginUserEmail);
 
   const from = location.state?.from?.pathname || "/";
+
+  if (token) {
+    navigate(from, { replace: true });
+  }
 
   const googleLoginHandler = async () => {
     try {
       const result = await providerLogin(googleProvider);
       saveUserAndTokenGenerate(result.user);
-      generateJwt(result?.user?.email);
-      navigate(from, { replace: true });
+      // generateJwt(result?.user?.email);
+      setLoginUserEmail(result.user.email);
+      // navigate(from, { replace: true });
       toast.success("Login with google successful...");
     } catch (error) {
       toast.error(error.message);
@@ -41,13 +46,15 @@ const Signin = () => {
 
       const password = form.password.value;
       const result = await logIn(email, password);
+      setLoginUserEmail(result.user.email);
 
       console.log(result);
 
-      generateJwt(result?.user?.email);
+      // generateJwt(result?.user?.email);
+
       toast.success("User Login Successful...");
       console.log(result.user);
-      navigate(from, { replace: true });
+      // navigate(from, { replace: true });
     } catch (error) {
       toast.error(error.message);
     } finally {

@@ -17,7 +17,12 @@ const CategoryPage = () => {
     queryFn: async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_URL}/products/${id}`
+          `${process.env.REACT_APP_URL}/products/${id}`,
+          {
+            headers: {
+              authorization: `bearer ${localStorage.getItem("token")}`,
+            },
+          }
         );
         const data = await response.json();
         // console.log(data.data);

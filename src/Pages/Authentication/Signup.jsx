@@ -2,11 +2,9 @@ import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  generateJwt,
-  saveUserAndTokenGenerate,
-} from "../../Apis/userApiAndToken";
+import { saveUserAndTokenGenerate } from "../../Apis/userApiAndToken";
 import { AuthContext } from "../../contexts/AuthProvider";
+import useToken from "../../Hooke/useToken";
 
 const Signup = () => {
   const googleProvider = new GoogleAuthProvider();
@@ -18,8 +16,13 @@ const Signup = () => {
     setLoading,
     loading,
   } = useContext(AuthContext);
-  const [Image, setImage] = useState("");
   const navigate = useNavigate();
+  const [userLoginEmail, setUserLoginEmail] = useState("");
+  const [token] = useToken(userLoginEmail);
+
+  if (token) {
+    navigate("/");
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,10 +65,12 @@ const Signup = () => {
             );
             console.log(usergenerated);
             if (usergenerated.success) {
-              generateJwt(result?.user?.email);
+              // generateJwt(result?.user?.email);
+
+              setUserLoginEmail(result.user.email);
             }
             await emailVerify();
-            navigate("/");
+            // navigate("/");
             toast.success(`User has created`);
           } catch (error) {
             toast.error(error.message);
@@ -87,8 +92,9 @@ const Signup = () => {
     try {
       const result = await providerLogin(googleProvider);
       saveUserAndTokenGenerate(result.user);
-      generateJwt(result?.user?.email);
-      navigate("/");
+      // generateJwt(result?.user?.email);
+      // navigate("/");
+      setUserLoginEmail(result.user.email);
       toast.success("Login with google successful...");
     } catch (error) {
       toast.error(error.message);
