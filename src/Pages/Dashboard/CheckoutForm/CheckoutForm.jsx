@@ -10,6 +10,29 @@ const CheckoutForm = ({ orderId, price, email, name, productId }) => {
   const elements = useElements();
   const [processing, setProcessing] = useState(false);
   const navigate = useNavigate();
+  const [paidProduct, setPaidProduct] = useState(null);
+
+  useEffect(() => {
+    const loadSingleProduct = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_URL}/productspaid/${productId}`,
+          {
+            headers: {
+              authorization: `bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+
+        const data = await response.json();
+        console.log(data);
+        setPaidProduct(data.paid);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    loadSingleProduct();
+  }, [productId]);
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
@@ -148,34 +171,40 @@ const CheckoutForm = ({ orderId, price, email, name, productId }) => {
   };
 
   return (
-    <div className="px-12 py-24 bg-gray-100 shadow-2xl w-full lg:w-[800px] my-12 rounded-2xl">
-      <form onSubmit={handleSubmit}>
-        <CardElement
-          options={{
-            style: {
-              base: {
-                fontSize: "24px",
-                color: "#424770",
-                "::placeholder": {
-                  color: "black",
+    <>
+      {!paidProduct ? (
+        <div className="px-12 py-24 bg-gray-100 shadow-2xl w-full lg:w-[800px] my-12 rounded-2xl">
+          <form onSubmit={handleSubmit}>
+            <CardElement
+              options={{
+                style: {
+                  base: {
+                    fontSize: "24px",
+                    color: "#424770",
+                    "::placeholder": {
+                      color: "black",
+                    },
+                  },
+                  invalid: {
+                    color: "#9e2146",
+                  },
                 },
-              },
-              invalid: {
-                color: "#9e2146",
-              },
-            },
-          }}
-        />
-        <button
-          className="btn btn-sm mt-6"
-          type="submit"
-          disabled={!stripe || !clientSecret || processing}
-        >
-          Pay
-        </button>
-      </form>
-      {cardError && <p className="text-red-600">{cardError}</p>}
-    </div>
+              }}
+            />
+            <button
+              className="btn btn-sm mt-6"
+              type="submit"
+              disabled={!stripe || !clientSecret || processing}
+            >
+              Pay
+            </button>
+          </form>
+          {cardError && <p className="text-red-600">{cardError}</p>}
+        </div>
+      ) : (
+        <div>Product is already sold out!</div>
+      )}
+    </>
   );
 };
 

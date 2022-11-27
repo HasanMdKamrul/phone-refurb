@@ -10,7 +10,7 @@ const CategoryCard = ({ category }) => {
         state={{ categoryName: category?.categoryName }}
         to={`/category/${category?._id}`}
       >
-        <div className="max-w-md h-96 w-96 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
+        <div className="max-w-xs  overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
           <div className="px-4 py-2">
             <h1 className="text-3xl font-bold text-gray-800 uppercase dark:text-white">
               {category?.categoryName}

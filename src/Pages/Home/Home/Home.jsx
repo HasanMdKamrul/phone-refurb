@@ -49,10 +49,10 @@ const Home = () => {
   return (
     <div>
       <div className="flex justify-center items-center">
-        <div className="w-1/2">
+        <div className="md:w-1/2 w-full">
           <Banner />
         </div>
-        <div className="w-1/2">
+        <div className="md:w-1/2 w-full">
           <Lottie animationData={bannerAnimation} />
         </div>
       </div>

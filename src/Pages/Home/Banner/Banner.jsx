@@ -18,7 +18,7 @@ const Banner = () => {
             <Typewriter loop words={["Re-Sale | Buy | Exchange"]} />
           </p>
           <Link to={`/signup`}>
-            <button className="btn btn-outline">Get Started</button>
+            <button className="btn mt-5 btn-outline">Get Started</button>
           </Link>
         </div>
       </div>
