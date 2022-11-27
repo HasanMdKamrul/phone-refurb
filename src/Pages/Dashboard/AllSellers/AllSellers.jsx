@@ -65,7 +65,11 @@ const AllSellers = () => {
   };
 
   if (isLoading) {
-    return <Sppiner />;
+    return (
+      <div className="flex w-full justify-center items-center">
+        <Sppiner />
+      </div>
+    );
   }
 
   return (

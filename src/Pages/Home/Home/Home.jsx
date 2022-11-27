@@ -8,6 +8,7 @@ import UseRole from "../../../Hooke/useRole";
 import BuyerRoute from "../../../Routes/BuyerRoute/BuyerRoute";
 import BookingModal from "../../Shared/BookingModal/BookingModal";
 import Sppiner from "../../Shared/Sppiners/Sppiner";
+import Aboutus from "../Aboutus/Aboutus";
 import AdvertiseProducts from "../AdvertiseProducts/AdvertiseProducts";
 import Banner from "../Banner/Banner";
 import Categories from "../Categories/Categories";
@@ -84,6 +85,7 @@ const Home = () => {
         </div>
       )}
       <Categories />
+      <Aboutus />
     </div>
   );
 };

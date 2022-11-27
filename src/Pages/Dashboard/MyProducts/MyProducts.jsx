@@ -71,10 +71,6 @@ const MyProducts = () => {
     }
   };
 
-  if (isLoading || loadingRole || loading) {
-    return <Sppiner />;
-  }
-
   const handleDelete = async (product) => {
     try {
       await sellerProductDelete(product._id);
@@ -85,71 +81,89 @@ const MyProducts = () => {
     }
   };
 
+  // if (isLoading || loadingRole || loading) {
+  //   return (
+  //     <div className="flex justify-center items-center">
+  //       <Sppiner />
+  //     </div>
+  //   );
+  // }
+
   //   console.log("products", products);
 
   return (
-    <div>
-      <h1 className="text-center text-3xl font-bold  my-12 mb-5">
-        My Products
-      </h1>
-      <div>
-        <div className="overflow-x-auto">
-          <table className="table  mt-2 w-full">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Product Image</th>
-                <th>Product Name</th>
-                <th>Price</th>
-                <th>Product Status</th>
-                <th>Advertise</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {products.map((product, i) => (
-                <tr key={product._id}>
-                  <th>{i + 1}</th>
-                  <td>
-                    <div className="avatar">
-                      <div className="w-24 mask mask-squircle">
-                        <img src={product?.productImage} alt="" />
-                      </div>
-                    </div>
-                  </td>
-                  <td>{product?.name}</td>
-                  <td>$ {product?.sellingprice}</td>
-                  <td>Status : {product?.paid ? "Sold" : "Unsold"} </td>
-                  <td>
-                    {product.advertise ? (
-                      <p className="text-blue-600 font-semibold">Advertised</p>
-                    ) : (
-                      <>
-                        <button
-                          disabled={product.paid}
-                          onClick={() => advertiseHandle(product)}
-                          className="btn btn-ghost"
-                        >
-                          Advertise
-                        </button>
-                      </>
-                    )}
-                  </td>
-                  <td>
-                    <button
-                      onClick={() => handleDelete(product)}
-                      className="btn btn-accent btn-sm"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+    <>
+      {isLoading || loading || loadingRole ? (
+        <div className="flex justify-center w-full items-center">
+          <Sppiner />
         </div>
-      </div>
-    </div>
+      ) : (
+        <div>
+          <h1 className="text-center text-3xl font-bold  my-12 mb-5">
+            My Products
+          </h1>
+          <div>
+            <div className="overflow-x-auto">
+              <table className="table  mt-2 w-full">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Product Image</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Product Status</th>
+                    <th>Advertise</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {products.map((product, i) => (
+                    <tr key={product._id}>
+                      <th>{i + 1}</th>
+                      <td>
+                        <div className="avatar">
+                          <div className="w-24 mask mask-squircle">
+                            <img src={product?.productImage} alt="" />
+                          </div>
+                        </div>
+                      </td>
+                      <td>{product?.name}</td>
+                      <td>$ {product?.sellingprice}</td>
+                      <td>Status : {product?.paid ? "Sold" : "Unsold"} </td>
+                      <td>
+                        {product.advertise ? (
+                          <p className="text-blue-600 font-semibold">
+                            Advertised
+                          </p>
+                        ) : (
+                          <>
+                            <button
+                              disabled={product.paid}
+                              onClick={() => advertiseHandle(product)}
+                              className="btn btn-ghost"
+                            >
+                              Advertise
+                            </button>
+                          </>
+                        )}
+                      </td>
+                      <td>
+                        <button
+                          onClick={() => handleDelete(product)}
+                          className="btn btn-accent btn-sm"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

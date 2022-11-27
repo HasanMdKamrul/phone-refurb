@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+## Project Name or Website Name
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Phone-Refurb
 
-## Available Scripts
+# To see live: https://mastering-ai-app.web.app/
 
-In the project directory, you can run:
+### Author : Md Kamrul Hasan
 
-### `yarn start`
+# What features it offers?
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- In this SPA web app you will find various courses related to the AI. Which are focued on learning and a beautiful ui which will navigate you smoothly.
+- The interactive navbar consists of few routes including a login, logout icon which toggles based on user interactivity. Besides the profile photo with the link as an avatar appears when the user logged in.
+- In the profile page you can edit the profile information such as profile picture and the name.
+- In the first page of the UI, you'll find two buttons if you're not signuped or logged in.
+- One of them is Buy courses -> which will navigate you to the courses page.Another button is the sign up button, which you can use if you're new to the platform.
+- At the home component I have dynamically shown information about the instructors
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- On the courses page you'll find several courses card at the left and course outline at the right nav.
+- By clicking those you can go to the course details page .
+- There you will find the detail info about the course this platfrom is offering, also you can download the detail info by clicking the dowload icon.
+- By using the get premium access you can easily purchased your desired course.
+- At the end you'll find a greetings page.
 
-### `yarn test`
+- In the blog page you'll find tech related blogs
+- At the FAQ page you'll get FAQs.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- I have also included a find button, which will redirect you to the find route where you will find a map to get to us and a mailing platform to talk to us.
+- React lazy load and suspance implemented to give the user a better exprerience which the big chunk of data load from the api.
+- You can find the courses according to their categories in the courses page.
+- In the password section you'll get an eye icon to show or hide your password by clicking.
+- You can reset your password as well if you forgot
 
-### `yarn build`
+## What is used to build this web-site (Technologies)?
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- React
+- Firebase
+- Firebase Hosting
+- Html 5
+- CSS 3
+- React-router-dom
+- React-icons
+- Kitwind
+- Mamba UI
+- Tailwind CSS
+- Lottie React
+- Daisy Ui
+- React-toastify
+- React-tooltip
+- React-simple-typewritter
+- React-to-pdf
+- React-Lazy-loading and suspance

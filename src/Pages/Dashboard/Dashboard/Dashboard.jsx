@@ -10,8 +10,12 @@ const Dashboard = () => {
   const { user } = useContext(AuthContext);
   const { role, loadingRole } = UseRole(user?.email);
 
-  if (loadingRole) {
-    return <Sppiner />;
+  if (true) {
+    return (
+      <div className="flex w-full justify-center items-center">
+        <Sppiner />
+      </div>
+    );
   }
 
   return (

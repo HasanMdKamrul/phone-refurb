@@ -23,7 +23,11 @@ const AllBuyers = () => {
   });
 
   if (isLoading) {
-    return <Sppiner />;
+    return (
+      <div className="flex w-full justify-center items-center">
+        <Sppiner />
+      </div>
+    );
   }
 
   const { data: buyers } = data;
@@ -51,6 +55,7 @@ const AllBuyers = () => {
             <thead>
               <tr>
                 <th></th>
+                <th>Name</th>
 
                 <th>Email</th>
                 <th>Role</th>
@@ -61,6 +66,8 @@ const AllBuyers = () => {
               {buyers?.map((buyer, i) => (
                 <tr key={buyer._id}>
                   <th>{i + 1}</th>
+
+                  <td>{buyer?.name}</td>
                   <td>{buyer?.email}</td>
                   <td>{buyer?.role}</td>
                   <td>

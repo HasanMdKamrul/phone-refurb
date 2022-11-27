@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { MdLogin, MdLogout } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
+import logo from "../../../assets/Images/Image/logo.svg";
 import { AuthContext } from "../../../contexts/AuthProvider";
 
 const Navbar = () => {
@@ -24,7 +25,9 @@ const Navbar = () => {
         <NavLink
           to="/home"
           className={({ isActive }) =>
-            isActive ? "border-b-2 p-2 text-blue-500 font-bold" : ""
+            isActive
+              ? "border-b-2 p-2 text-blue-500 font-bold"
+              : "p-2 font-bold"
           }
         >
           Home
@@ -33,12 +36,24 @@ const Navbar = () => {
           <NavLink
             to="/dashboard"
             className={({ isActive }) =>
-              isActive ? "border-b-2 p-2 text-blue-500 ml-2 font-bold" : "ml-2"
+              isActive
+                ? "border-b-2 p-2 text-blue-500 ml-2 font-semibold"
+                : "ml-2 p-2 font-bold"
             }
           >
             Dashboard
           </NavLink>
         )}
+        <NavLink
+          to="/blog"
+          className={({ isActive }) =>
+            isActive
+              ? "border-b-2 p-2 ml-2 text-blue-500 font-semibold"
+              : "p-2 font-bold"
+          }
+        >
+          Blog
+        </NavLink>
       </li>
     </>
   );
@@ -71,9 +86,12 @@ const Navbar = () => {
               {menuItems}
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost normal-case text-xl">
-            Phone-Refurb
-          </Link>
+          <div className="flex justify-between items-center">
+            <img className="md:w-24 w-12" src={logo} alt="" />
+            <Link to="/" className="btn btn-ghost  normal-case md:text-xl ">
+              Phone-Refurb
+            </Link>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className=" p-0">{menuItems}</ul>

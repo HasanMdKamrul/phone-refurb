@@ -38,11 +38,15 @@ const CategoryPage = () => {
   };
 
   if (isLoading) {
-    return <Sppiner />;
+    return (
+      <div className="flex justify-center  items-center  ">
+        <Sppiner />
+      </div>
+    );
   }
 
   return (
-    <div>
+    <div className="min-h-screen">
       <div>
         <h1 className="text-5xl font-bold text-center mt-12">{categoryName}</h1>
       </div>

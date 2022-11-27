@@ -3,6 +3,7 @@ import DashboardLayout from "../../layouts/DashboardLayout";
 import Main from "../../layouts/Main";
 import Signin from "../../Pages/Authentication/Signin";
 import Signup from "../../Pages/Authentication/Signup";
+import Blog from "../../Pages/Blog/Blog";
 import AddAProduct from "../../Pages/Dashboard/AddAProduct/AddAProduct";
 import AllBuyers from "../../Pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
+        loader: () => fetch(`${process.env.REACT_APP_URL}/blogs`),
       },
       {
         path: "/home",
