@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
+import Lottie from "lottie-react";
 import React, { useContext, useState } from "react";
 import { getAdvertiseProducts } from "../../../Apis/productsApi";
+import bannerAnimation from "../../../assets/Animation/BannerAnimation.json";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import UseRole from "../../../Hooke/useRole";
 import BuyerRoute from "../../../Routes/BuyerRoute/BuyerRoute";
@@ -46,7 +48,14 @@ const Home = () => {
 
   return (
     <div>
-      <Banner />
+      <div className="flex justify-center items-center">
+        <div className="w-1/2">
+          <Banner />
+        </div>
+        <div className="w-1/2">
+          <Lottie animationData={bannerAnimation} />
+        </div>
+      </div>
 
       {advertiseProducts.length > 0 && (
         <div>

@@ -7,7 +7,7 @@ const AdvertiseProducts = ({ product, handleModal }) => {
   const { productImage, description, sellingprice, condition, name } = product;
 
   return (
-    <div className="flex max-w-md my-12 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
+    <div className="flex max-w-md hover:dark:bg-gray-600  mx-6 my-12 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
       <div
         className="w-1/3 bg-cover bg-no-repeat"
         style={{

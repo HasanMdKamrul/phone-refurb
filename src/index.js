@@ -9,6 +9,8 @@ import UserRoleProvider from "./contexts/UserRoleProvider";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
+import bannerImage from "./../src/assets/Images/Image/blurry-gradient-haikei.svg";
+
 const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,7 +20,12 @@ root.render(
         <Toaster />
         <QueryClientProvider client={queryClient}>
           <UserRoleProvider>
-            <App />
+            <div
+              className="min-h-screen bg-no-repeat bg-cover"
+              style={{ backgroundImage: `url(${bannerImage})` }}
+            >
+              <App />
+            </div>
           </UserRoleProvider>
         </QueryClientProvider>
       </CategoryProvider>
