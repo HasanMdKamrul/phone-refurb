@@ -6,6 +6,10 @@
 
 ### Author : Md Kamrul Hasan
 
+adminEmail: lovolag154@xegge.com
+
+adminPassword: 123456
+
 # What features it offers?
 
 - In this SPA web app you will find various categories related to the Second-Hand Mobile Phone. Which are focued on buy,sell and exchange.
