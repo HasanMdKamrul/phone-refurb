@@ -16,7 +16,7 @@ const Signin = () => {
   const [loginUserEmail, setLoginUserEmail] = useState("");
   const [token] = useToken(loginUserEmail);
 
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/dashboard";
 
   if (token) {
     navigate(from, { replace: true });
@@ -72,6 +72,7 @@ const Signin = () => {
   //       toast.error(error.message);
   //     }
   //   };
+
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-md shadow-md bg-gray-500">

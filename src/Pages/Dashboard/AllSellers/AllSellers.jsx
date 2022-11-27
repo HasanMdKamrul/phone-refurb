@@ -64,13 +64,17 @@ const AllSellers = () => {
     }
   };
 
+  if (isLoading) {
+    return <Sppiner />;
+  }
+
   return (
-    <div>
+    <div className="my-8 flex  items-center flex-col">
       <div>
         <h1 className="text-center text-3xl font-bold">All Sellers</h1>
       </div>
       <div>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto mt-12 ">
           <table className="table w-full">
             <thead>
               <tr>

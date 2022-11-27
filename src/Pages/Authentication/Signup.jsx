@@ -21,7 +21,7 @@ const Signup = () => {
   const [token] = useToken(userLoginEmail);
 
   if (token) {
-    navigate("/");
+    navigate("/dashboard");
   }
 
   const handleSubmit = (e) => {

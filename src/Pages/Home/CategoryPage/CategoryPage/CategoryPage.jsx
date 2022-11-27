@@ -46,7 +46,7 @@ const CategoryPage = () => {
       <div>
         <h1 className="text-5xl font-bold text-center mt-12">{categoryName}</h1>
       </div>
-      <div>
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
         {products?.map((product) => (
           <ProductCard
             handleModal={handleModal}

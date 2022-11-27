@@ -48,13 +48,13 @@ const ReportedProducts = () => {
   }
 
   return (
-    <div>
+    <div className="my-8 flex  items-center flex-col">
       <div>
         <h1 className="text-center text-3xl font-bold">Reported Products</h1>
       </div>
       <div>
         <div className="overflow-x-auto">
-          <table className="table w-full">
+          <table className="table mt-12 w-full">
             <thead>
               <tr>
                 <th></th>

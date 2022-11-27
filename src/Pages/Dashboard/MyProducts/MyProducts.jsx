@@ -89,10 +89,12 @@ const MyProducts = () => {
 
   return (
     <div>
-      <h1 className="text-center text-3xl font-semibold mb-5">My Products</h1>
+      <h1 className="text-center text-3xl font-bold  my-12 mb-5">
+        My Products
+      </h1>
       <div>
         <div className="overflow-x-auto">
-          <table className="table w-full">
+          <table className="table  mt-2 w-full">
             <thead>
               <tr>
                 <th></th>

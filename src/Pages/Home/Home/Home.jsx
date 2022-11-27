@@ -33,7 +33,7 @@ const Home = () => {
     },
   });
 
-  //   console.log(advertiseProducts);
+  console.log(advertiseProducts);
 
   const handleModal = (product) => {
     console.log(product);
@@ -59,22 +59,24 @@ const Home = () => {
 
       {advertiseProducts.length > 0 && (
         <div>
-          <div className="mt-12">
-            <h1 className="text-center text-4xl my-5 font-extrabold">
-              Featured Products
-            </h1>
-          </div>
           {role && role === "buyer" && (
-            <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {advertiseProducts?.map((product) => (
-                <BuyerRoute key={product._id}>
-                  <AdvertiseProducts
-                    handleModal={handleModal}
-                    product={product}
-                  />
-                </BuyerRoute>
-              ))}
-            </div>
+            <>
+              <div className="mt-12">
+                <h1 className="text-center text-4xl my-5 font-extrabold">
+                  Featured Products
+                </h1>
+              </div>
+              <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {advertiseProducts?.map((product) => (
+                  <BuyerRoute key={product._id}>
+                    <AdvertiseProducts
+                      handleModal={handleModal}
+                      product={product}
+                    />
+                  </BuyerRoute>
+                ))}
+              </div>
+            </>
           )}
           {product && (
             <BookingModal product={product} setProduct={setProduct} />

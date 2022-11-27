@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import Sppiner from "../../Shared/Sppiners/Sppiner";
 
 const CheckoutForm = ({ orderId, price, email, name, productId }) => {
   const [cardError, setCardError] = useState("");
@@ -11,6 +12,7 @@ const CheckoutForm = ({ orderId, price, email, name, productId }) => {
   const [processing, setProcessing] = useState(false);
   const navigate = useNavigate();
   const [paidProduct, setPaidProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadSingleProduct = async () => {
@@ -27,6 +29,7 @@ const CheckoutForm = ({ orderId, price, email, name, productId }) => {
         const data = await response.json();
         console.log(data);
         setPaidProduct(data.paid);
+        setLoading(false);
       } catch (error) {
         console.log(error.message);
       }
@@ -170,10 +173,14 @@ const CheckoutForm = ({ orderId, price, email, name, productId }) => {
     }
   };
 
+  if (loading) {
+    return <Sppiner />;
+  }
+
   return (
     <>
       {!paidProduct ? (
-        <div className="px-12 py-24 bg-gray-100 shadow-2xl w-full lg:w-[800px] my-12 rounded-2xl">
+        <div className="px-12 border py-24 bg-transparent shadow w-full lg:w-[800px] my-12 rounded-2xl">
           <form onSubmit={handleSubmit}>
             <CardElement
               options={{

@@ -115,9 +115,9 @@ const AddAProduct = () => {
 
   return (
     <>
-      <section className="max-w-4xl p-6 mx-auto mt-12 rounded-md shadow-md bg-gray-500">
+      <section className="max-w-4xl p-6 mx-auto mt-12  shadow-xl my-12 rounded-2xl bg-gray-600">
         <h2 className="text-lg font-semibold text-gray-700 capitalize dark:text-white">
-          Account settings
+          Add A Product
         </h2>
 
         <form onSubmit={handleSubmit}>

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 import UseRole from "../Hooke/useRole";
 import Navbar from "../Pages/Shared/Navbar/Navbar";
@@ -24,36 +24,76 @@ const DashboardLayout = () => {
         </div>
         <div className="drawer-side">
           <label htmlFor="sidebar-drawer" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+          <ul className="menu p-4 w-80 text-base-content">
             {role && role === "seller" && (
               <>
                 <li>
-                  <Link to="/dashboard/addaproduct">Add A Product</Link>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive && "border-b border-gray-200 text-blue-600"
+                    }
+                    to="/dashboard/addaproduct"
+                  >
+                    Add A Product
+                  </NavLink>
                 </li>
                 <li className="my-2">
-                  <Link to="/dashboard/myproducts">My Products</Link>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive && "border-b border-gray-200 text-blue-600"
+                    }
+                    to="/dashboard/myproducts"
+                  >
+                    My Products
+                  </NavLink>
                 </li>
               </>
             )}
             {role && role === "admin" && (
               <>
                 <li>
-                  <Link to="/dashboard/allsellers">All Sellers</Link>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive && "border-b border-gray-200 text-blue-600"
+                    }
+                    to="/dashboard/allsellers"
+                  >
+                    All Sellers
+                  </NavLink>
                 </li>
                 <li className="my-2">
-                  <Link to="/dashboard/allbuyers">All Buyers</Link>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive && "border-b border-gray-200 text-blue-600"
+                    }
+                    to="/dashboard/allbuyers"
+                  >
+                    All Buyers
+                  </NavLink>
                 </li>
                 <li className="my-2">
-                  <Link to="/dashboard/reportedProducts">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive && "border-b border-gray-200 text-blue-600"
+                    }
+                    to="/dashboard/reportedProducts"
+                  >
                     Reported Products
-                  </Link>
+                  </NavLink>
                 </li>
               </>
             )}
             {role && role === "buyer" && (
               <>
                 <li>
-                  <Link to="/dashboard/myorders">My Orders</Link>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive && "border-b border-gray-200 text-blue-600"
+                    }
+                    to="/dashboard/myorders"
+                  >
+                    My Orders
+                  </NavLink>
                 </li>
               </>
             )}
