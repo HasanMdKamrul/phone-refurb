@@ -174,7 +174,11 @@ const CheckoutForm = ({ orderId, price, email, name, productId }) => {
   };
 
   if (loading) {
-    return <Sppiner />;
+    return (
+      <div className="flex justify-center w-full items-center">
+        <Sppiner />
+      </div>
+    );
   }
 
   return (

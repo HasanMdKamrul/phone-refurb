@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 import UseRole from "../Hooke/useRole";
+import Footer from "../Pages/Shared/Footer/Footer";
 import Navbar from "../Pages/Shared/Navbar/Navbar";
 import Sppiner from "../Pages/Shared/Sppiners/Sppiner";
 
@@ -11,7 +12,11 @@ const DashboardLayout = () => {
   const { role, loadingRole } = UseRole(user?.email);
 
   if (loadingRole) {
-    return <Sppiner />;
+    return (
+      <div className="flex justify-center w-full items-center">
+        <Sppiner />
+      </div>
+    );
   }
 
   return (
@@ -100,6 +105,7 @@ const DashboardLayout = () => {
           </ul>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

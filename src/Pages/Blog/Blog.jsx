@@ -17,7 +17,11 @@ const Blog = () => {
   });
 
   if (isLoading) {
-    return <Sppiner />;
+    return (
+      <div className="flex justify-center w-full items-center">
+        <Sppiner />
+      </div>
+    );
   }
 
   return (

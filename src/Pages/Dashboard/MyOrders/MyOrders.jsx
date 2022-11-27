@@ -31,7 +31,7 @@ const MyOrders = () => {
 
   if (isLoading) {
     return (
-      <div className="flex w-full justify-center items-center">
+      <div className="flex justify-center w-full items-center">
         <Sppiner />
       </div>
     );
