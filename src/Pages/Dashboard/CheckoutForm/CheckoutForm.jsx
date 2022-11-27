@@ -148,16 +148,16 @@ const CheckoutForm = ({ orderId, price, email, name, productId }) => {
   };
 
   return (
-    <div className="p-12 bg-gray-200 shadow-2xl w-96 my-12 rounded-2xl">
+    <div className="px-12 py-24 bg-gray-100 shadow-2xl w-full lg:w-[800px] my-12 rounded-2xl">
       <form onSubmit={handleSubmit}>
         <CardElement
           options={{
             style: {
               base: {
-                fontSize: "16px",
+                fontSize: "24px",
                 color: "#424770",
                 "::placeholder": {
-                  color: "#aab7c4",
+                  color: "black",
                 },
               },
               invalid: {

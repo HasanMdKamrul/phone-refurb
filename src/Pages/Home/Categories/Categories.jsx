@@ -27,20 +27,18 @@ const Categories = () => {
   }, []);
 
   return (
-    <>
-      <div className="  mx-24 py-12">
-        <div>
-          <h1 className="text-4xl text-center font-extrabold mb-12">
-            Discover Our Categories
-          </h1>
-        </div>
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {categories?.map((category) => (
-            <CategoryCard category={category} key={category?._id} />
-          ))}
-        </section>
+    <div className="py-12">
+      <div>
+        <h1 className="text-4xl text-center font-extrabold mb-12">
+          Discover Our Categories
+        </h1>
       </div>
-    </>
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+        {categories?.map((category) => (
+          <CategoryCard category={category} key={category?._id} />
+        ))}
+      </section>
+    </div>
   );
 };
 
