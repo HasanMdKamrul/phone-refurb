@@ -34,7 +34,7 @@ const MyOrders = () => {
   }
 
   return (
-    <div className="mt-5">
+    <div className="my-5  mx-auto">
       <div className="my-8">
         <h1 className="text-center font-extrabold text-5xl">Your Orders</h1>
       </div>

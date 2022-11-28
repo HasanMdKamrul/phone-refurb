@@ -48,7 +48,7 @@ const ReportedProducts = () => {
   }
 
   return (
-    <div className="my-8 flex  items-center flex-col">
+    <div className="my-8 flex  items-center mx-auto flex-col">
       <div>
         <h1 className="text-center text-3xl font-bold">Reported Products</h1>
       </div>

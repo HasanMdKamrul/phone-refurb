@@ -47,7 +47,7 @@ const AllBuyers = () => {
   }
 
   return (
-    <div className="my-8 flex  items-center flex-col">
+    <div className="my-8 flex mx-auto  items-center flex-col">
       <div>
         <h1 className="text-center text-3xl font-bold">All Buyers</h1>
       </div>
