@@ -193,7 +193,7 @@ const AddAProduct = () => {
                 name="productCategory"
                 className="select select-bordered w-full "
               >
-                {categories.map((category) => (
+                {categories?.map((category) => (
                   <option value={category._id} key={category._id}>
                     {category.categoryName}
                   </option>
@@ -212,7 +212,7 @@ const AddAProduct = () => {
                 name="condition"
                 className="select select-bordered w-full "
               >
-                {conditionInfo.map((condition, i) => (
+                {conditionInfo?.map((condition, i) => (
                   <option value={condition} key={i}>
                     {condition}
                   </option>

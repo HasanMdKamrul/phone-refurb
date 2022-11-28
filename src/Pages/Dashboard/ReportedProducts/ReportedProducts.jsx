@@ -5,7 +5,7 @@ import {
   deleteReportedProduct,
   getReportedProducts,
 } from "../../../Apis/productsApi";
-import Sppiner from "../../Shared/Sppiners/Sppiner";
+import SppinerBackground from "../../Shared/Sppiners/SppinerBackground";
 
 const ReportedProducts = () => {
   // ** get all reported products here
@@ -44,11 +44,7 @@ const ReportedProducts = () => {
   console.log(reportedProducts);
 
   if (isLoading) {
-    return (
-      <div className="flex w-full justify-center items-center">
-        <Sppiner />
-      </div>
-    );
+    return <SppinerBackground />;
   }
 
   return (

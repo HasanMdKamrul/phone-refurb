@@ -2,7 +2,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import Sppiner from "../../Shared/Sppiners/Sppiner";
+import SppinerBackground from "../../Shared/Sppiners/SppinerBackground";
 
 const CheckoutForm = ({ orderId, price, email, name, productId }) => {
   const [cardError, setCardError] = useState("");
@@ -174,11 +174,7 @@ const CheckoutForm = ({ orderId, price, email, name, productId }) => {
   };
 
   if (loading) {
-    return (
-      <div className="flex justify-center w-full items-center">
-        <Sppiner />
-      </div>
-    );
+    return <SppinerBackground />;
   }
 
   return (

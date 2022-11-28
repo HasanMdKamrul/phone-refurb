@@ -5,7 +5,7 @@ import {
   deleteSellerAndBuyer,
   loadSellersAndBuyers,
 } from "../../../Apis/userApiAndToken";
-import Sppiner from "../../Shared/Sppiners/Sppiner";
+import SppinerBackground from "../../Shared/Sppiners/SppinerBackground";
 
 const AllBuyers = () => {
   // ** Load All Sellers data
@@ -23,11 +23,7 @@ const AllBuyers = () => {
   });
 
   if (isLoading) {
-    return (
-      <div className="flex w-full justify-center items-center">
-        <Sppiner />
-      </div>
-    );
+    return <SppinerBackground />;
   }
 
   const { data: buyers } = data;

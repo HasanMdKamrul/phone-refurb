@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 import {
   getSellerProducts,
   productAdvertiseOrReported,
@@ -9,18 +8,14 @@ import {
 } from "../../../Apis/productsApi";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import UseRole from "../../../Hooke/useRole";
-import Sppiner from "../../Shared/Sppiners/Sppiner";
+import SppinerBackground from "../../Shared/Sppiners/SppinerBackground";
 
 const MyProducts = () => {
   const { user } = useContext(AuthContext);
   //   const { loadingRole } = useContext(UserRoleContext);
-  const { loadingRole, role } = UseRole(user?.email);
+  const { loadingRole } = UseRole(user?.email);
 
   const [loading, setLoading] = useState(false);
-
-  const [unsold, setUnsold] = useState(true);
-
-  const navigate = useNavigate();
 
   // ** Load all products by this seller
 
@@ -94,9 +89,7 @@ const MyProducts = () => {
   return (
     <>
       {isLoading || loading || loadingRole ? (
-        <div className="flex justify-center w-full items-center">
-          <Sppiner />
-        </div>
+        <SppinerBackground />
       ) : (
         <div>
           <h1 className="text-center text-3xl font-bold  my-12 mb-5">
@@ -117,7 +110,7 @@ const MyProducts = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {products.map((product, i) => (
+                  {products?.map((product, i) => (
                     <tr key={product._id}>
                       <th>{i + 1}</th>
                       <td>

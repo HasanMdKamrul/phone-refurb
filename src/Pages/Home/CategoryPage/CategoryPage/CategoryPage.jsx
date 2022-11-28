@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import BookingModal from "../../../Shared/BookingModal/BookingModal";
-import Sppiner from "../../../Shared/Sppiners/Sppiner";
+import SppinerBackground from "../../../Shared/Sppiners/SppinerBackground";
 import ProductCard from "../ProductCard/ProductCard";
 
 const CategoryPage = () => {
@@ -38,11 +38,7 @@ const CategoryPage = () => {
   };
 
   if (isLoading) {
-    return (
-      <div className="flex justify-center  items-center  ">
-        <Sppiner />
-      </div>
-    );
+    return <SppinerBackground />;
   }
 
   return (

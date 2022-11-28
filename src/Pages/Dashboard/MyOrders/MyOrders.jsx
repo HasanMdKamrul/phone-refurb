@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthProvider";
-import Sppiner from "../../Shared/Sppiners/Sppiner";
+import SppinerBackground from "../../Shared/Sppiners/SppinerBackground";
 import OrderCard from "./OrderCard";
 
 const MyOrders = () => {
@@ -30,11 +30,7 @@ const MyOrders = () => {
   });
 
   if (isLoading) {
-    return (
-      <div className="flex justify-center w-full items-center">
-        <Sppiner />
-      </div>
-    );
+    return <SppinerBackground />;
   }
 
   return (

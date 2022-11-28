@@ -4,18 +4,14 @@ import { Link } from "react-router-dom";
 import welcomeAnimation from "../../../assets/Animation/welcomeAnimation.json";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import UseRole from "../../../Hooke/useRole";
-import Sppiner from "../../Shared/Sppiners/Sppiner";
+import SppinerBackground from "../../Shared/Sppiners/SppinerBackground";
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
   const { role, loadingRole } = UseRole(user?.email);
 
   if (loadingRole) {
-    return (
-      <div className="flex w-full justify-center items-center">
-        <Sppiner />
-      </div>
-    );
+    return <SppinerBackground />;
   }
 
   return (

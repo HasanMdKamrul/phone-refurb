@@ -7,7 +7,7 @@ import { AuthContext } from "../../../contexts/AuthProvider";
 import UseRole from "../../../Hooke/useRole";
 import BuyerRoute from "../../../Routes/BuyerRoute/BuyerRoute";
 import BookingModal from "../../Shared/BookingModal/BookingModal";
-import Sppiner from "../../Shared/Sppiners/Sppiner";
+import SppinerBackground from "../../Shared/Sppiners/SppinerBackground";
 import Aboutus from "../Aboutus/Aboutus";
 import AdvertiseProducts from "../AdvertiseProducts/AdvertiseProducts";
 import Banner from "../Banner/Banner";
@@ -42,7 +42,7 @@ const Home = () => {
   };
 
   if (isLoading) {
-    return <Sppiner />;
+    return <SppinerBackground />;
   }
 
   // console.log("add", advertiseProducts);

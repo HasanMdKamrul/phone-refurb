@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import Sppiner from "../Shared/Sppiners/Sppiner";
+import SppinerBackground from "../Shared/Sppiners/SppinerBackground";
 
 const Blog = () => {
   const { data: blogs, isLoading } = useQuery({
@@ -17,11 +17,7 @@ const Blog = () => {
   });
 
   if (isLoading) {
-    return (
-      <div className="flex justify-center w-full items-center">
-        <Sppiner />
-      </div>
-    );
+    return <SppinerBackground />;
   }
 
   return (

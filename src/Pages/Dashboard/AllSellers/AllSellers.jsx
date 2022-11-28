@@ -7,7 +7,7 @@ import {
   loadSellersAndBuyers,
   sellerVerification,
 } from "../../../Apis/userApiAndToken";
-import Sppiner from "../../Shared/Sppiners/Sppiner";
+import SppinerBackground from "../../Shared/Sppiners/SppinerBackground";
 
 const AllSellers = () => {
   // ** Load All Sellers data
@@ -25,10 +25,6 @@ const AllSellers = () => {
       }
     },
   });
-
-  if (isLoading) {
-    return <Sppiner />;
-  }
 
   const { data: sellers } = data;
 
@@ -65,11 +61,7 @@ const AllSellers = () => {
   };
 
   if (isLoading) {
-    return (
-      <div className="flex w-full justify-center items-center">
-        <Sppiner />
-      </div>
-    );
+    return <SppinerBackground />;
   }
 
   return (

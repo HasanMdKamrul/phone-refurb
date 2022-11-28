@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 import UseRole from "../../Hooke/useRole";
-import Sppiner from "../../Pages/Shared/Sppiners/Sppiner";
+import SppinerBackground from "../../Pages/Shared/Sppiners/SppinerBackground";
 
 const BuyerRoute = ({ children }) => {
   const location = useLocation();
@@ -11,7 +11,7 @@ const BuyerRoute = ({ children }) => {
   const { role, loadingRole } = UseRole(user?.email);
 
   if (loading || loadingRole) {
-    return <Sppiner />;
+    return <SppinerBackground />;
   }
 
   if (user && role === "buyer") {
