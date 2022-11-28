@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { saveUserAndTokenGenerate } from "../../Apis/userApiAndToken";
 import { AuthContext } from "../../contexts/AuthProvider";
-import useToken from "../../Hooke/useToken";
+import useToken from "../../Hooks/useToken";
 
 const Signin = () => {
   //   const [resetEmail, setResetEmail] = useState("");

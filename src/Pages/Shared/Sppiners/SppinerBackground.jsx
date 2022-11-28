@@ -3,7 +3,7 @@ import "./Sppiner.css";
 
 const SppinerBackground = () => {
   return (
-    <div>
+    <div className="min-h-screen">
       <div className="background-loader">
         <div className="loader">
           <span className="spinner spinner1"></span>

@@ -1,4 +1,12 @@
 import React, { useContext } from "react";
+import {
+  MdFileUpload,
+  MdMobileScreenShare,
+  MdOutlineSettings,
+  MdReport,
+  MdSettingsCell,
+  MdTrendingUp,
+} from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 import UseRole from "../Hooks/useRole";
@@ -35,6 +43,7 @@ const DashboardLayout = () => {
                     }
                     to="/dashboard/addaproduct"
                   >
+                    <MdFileUpload />
                     Add A Product
                   </NavLink>
                 </li>
@@ -45,6 +54,7 @@ const DashboardLayout = () => {
                     }
                     to="/dashboard/myproducts"
                   >
+                    <MdMobileScreenShare />
                     My Products
                   </NavLink>
                 </li>
@@ -59,6 +69,7 @@ const DashboardLayout = () => {
                     }
                     to="/dashboard/allsellers"
                   >
+                    <MdSettingsCell />
                     All Sellers
                   </NavLink>
                 </li>
@@ -69,6 +80,7 @@ const DashboardLayout = () => {
                     }
                     to="/dashboard/allbuyers"
                   >
+                    <MdOutlineSettings />
                     All Buyers
                   </NavLink>
                 </li>
@@ -79,6 +91,7 @@ const DashboardLayout = () => {
                     }
                     to="/dashboard/reportedProducts"
                   >
+                    <MdReport />
                     Reported Products
                   </NavLink>
                 </li>
@@ -93,6 +106,7 @@ const DashboardLayout = () => {
                     }
                     to="/dashboard/myorders"
                   >
+                    <MdTrendingUp />
                     My Orders
                   </NavLink>
                 </li>

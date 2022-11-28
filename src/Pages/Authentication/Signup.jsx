@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { saveUserAndTokenGenerate } from "../../Apis/userApiAndToken";
 import { AuthContext } from "../../contexts/AuthProvider";
-import useToken from "../../Hooke/useToken";
+import useToken from "../../Hooks/useToken";
 
 const Signup = () => {
   const googleProvider = new GoogleAuthProvider();
