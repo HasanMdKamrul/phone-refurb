@@ -4,7 +4,7 @@ import React, { useContext, useState } from "react";
 import { getAdvertiseProducts } from "../../../Apis/productsApi";
 import bannerAnimation from "../../../assets/Animation/BannerAnimation.json";
 import { AuthContext } from "../../../contexts/AuthProvider";
-import UseRole from "../../../Hooke/useRole";
+import UseRole from "../../../Hooks/useRole";
 import BuyerRoute from "../../../Routes/BuyerRoute/BuyerRoute";
 import BookingModal from "../../Shared/BookingModal/BookingModal";
 import SppinerBackground from "../../Shared/Sppiners/SppinerBackground";

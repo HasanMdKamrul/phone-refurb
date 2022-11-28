@@ -7,7 +7,7 @@ import {
   sellerProductDelete,
 } from "../../../Apis/productsApi";
 import { AuthContext } from "../../../contexts/AuthProvider";
-import UseRole from "../../../Hooke/useRole";
+import UseRole from "../../../Hooks/useRole";
 import SppinerBackground from "../../Shared/Sppiners/SppinerBackground";
 
 const MyProducts = () => {
@@ -38,7 +38,7 @@ const MyProducts = () => {
     },
   });
 
-  console.log(products);
+  // console.log(products);
 
   //   console.log("refech", products);
 

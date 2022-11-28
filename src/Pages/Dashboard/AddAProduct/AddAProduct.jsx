@@ -6,7 +6,7 @@ import { loadProducts } from "../../../Apis/productsApi";
 import { getSellerverifiedData } from "../../../Apis/userApiAndToken";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import { CategoryContext } from "../../../contexts/CategoryProvider";
-import useToken from "../../../Hooke/useToken";
+import useToken from "../../../Hooks/useToken";
 
 const conditionInfo = ["Excellent", "Good", "Fair"];
 

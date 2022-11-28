@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
-import UseRole from "../Hooke/useRole";
+import UseRole from "../Hooks/useRole";
 import Footer from "../Pages/Shared/Footer/Footer";
 import Navbar from "../Pages/Shared/Navbar/Navbar";
 import SppinerBackground from "../Pages/Shared/Sppiners/SppinerBackground";

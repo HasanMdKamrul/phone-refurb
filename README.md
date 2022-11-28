@@ -18,7 +18,7 @@ adminPassword: 123456
 - Seller - Who can see all of his posted Products and a Add A Product Form.
 - Buyer - Who can see his orders, also the products advertised by the seller at the home page.Buyer can pay price using their card by pressing pay button. This feature built using stripe.
 - There are 3 different categories at the home page and each category has its own set of products.
-- At the end you'll find a greetings page.
+- At the /dashboard route you'll find a greetings page.
 - In the blog page you'll find tech related blogs
 - It has very basic signup and signin page and where you can upload your photo directly from your computer or mobile devices.
 

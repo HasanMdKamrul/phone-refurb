@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import welcomeAnimation from "../../../assets/Animation/welcomeAnimation.json";
 import { AuthContext } from "../../../contexts/AuthProvider";
-import UseRole from "../../../Hooke/useRole";
+import UseRole from "../../../Hooks/useRole";
 import SppinerBackground from "../../Shared/Sppiners/SppinerBackground";
 
 const Dashboard = () => {

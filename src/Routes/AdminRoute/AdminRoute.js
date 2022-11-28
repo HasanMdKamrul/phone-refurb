@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
-import UseRole from "../../Hooke/useRole";
+import UseRole from "../../Hooks/useRole";
 import SppinerBackground from "../../Pages/Shared/Sppiners/SppinerBackground";
 
 const AdminRoute = ({ children }) => {
