@@ -180,7 +180,7 @@ const CheckoutForm = ({ orderId, price, email, name, productId }) => {
   return (
     <>
       {!paidProduct ? (
-        <div className="px-12 border py-24 bg-transparent shadow w-full lg:w-[800px] my-12 rounded-2xl">
+        <div className="px-12 border py-24 mx-auto  bg-transparent shadow w-full lg:w-[800px] my-12 rounded-2xl">
           <form onSubmit={handleSubmit}>
             <CardElement
               options={{
