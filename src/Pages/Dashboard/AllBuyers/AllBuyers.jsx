@@ -10,23 +10,25 @@ import SppinerBackground from "../../Shared/Sppiners/SppinerBackground";
 const AllBuyers = () => {
   // ** Load All Sellers data
 
-  const { data, isLoading, refetch } = useQuery({
+  const {
+    data: buyers = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["users", "buyer"],
     queryFn: async () => {
       try {
-        const data = loadSellersAndBuyers("buyer");
-        return data;
+        const data = await loadSellersAndBuyers("buyer");
+        return data.data;
       } catch (error) {
         console.log(error.message);
       }
     },
   });
 
-  if (isLoading) {
-    return <SppinerBackground />;
-  }
+  // const { data: buyers } = data;
 
-  const { data: buyers } = data;
+  // console.log(buyers);
 
   const deleteHandler = async (buyer) => {
     // console.log(buyer._id);
@@ -39,6 +41,10 @@ const AllBuyers = () => {
       console.log(error.message);
     }
   };
+
+  if (isLoading) {
+    return <SppinerBackground />;
+  }
 
   return (
     <div className="my-8 flex  items-center flex-col">

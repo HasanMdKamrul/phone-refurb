@@ -14,19 +14,25 @@ const AllSellers = () => {
 
   const [sellerId, setSellerId] = useState(null);
 
-  const { data, isLoading, refetch } = useQuery({
+  const {
+    data: sellers = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["users", "seller", "sellerverify", `${sellerId}`],
     queryFn: async () => {
       try {
-        const data = loadSellersAndBuyers("seller");
-        return data;
+        const data = await loadSellersAndBuyers("seller");
+        return data.data;
       } catch (error) {
         console.log(error.message);
       }
     },
   });
 
-  const { data: sellers } = data;
+  console.log(sellers);
+
+  // const { data: sellers } = data;
 
   const deleteHandler = async (seller) => {
     console.log(seller._id);
@@ -50,7 +56,7 @@ const AllSellers = () => {
     try {
       const data = await sellerVerification(seller);
 
-      if (data.modifiedCount) {
+      if (data?.modifiedCount) {
         toast.success("Seller Verified");
         refetch();
         setSellerId(seller._id);
