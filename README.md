@@ -21,6 +21,16 @@ SellerEmail : wodate2515@randrai.com
 
 seller Pass : 123456
 
+# Stripe Test card
+
+card no - 4242424242424242
+
+cvc - 132 
+
+date - any future date
+
+zip-code - any 5 digits code || 13245
+
 # What features it offers?
 
 - In this SPA web app you will find various categories related to the Second-Hand Mobile Phone. Which are focued on buy,sell and exchange.
