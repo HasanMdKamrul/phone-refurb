@@ -11,8 +11,14 @@ adminEmail: lovolag154@xegge.com
 adminPassword: 123456
 
 buyerEmail : kipikon985@lubde.com
+
+
 buyerPass : 123456
+
+
 SellerEmail : wodate2515@randrai.com
+
+
 seller Pass : 123456
 
 # What features it offers?
